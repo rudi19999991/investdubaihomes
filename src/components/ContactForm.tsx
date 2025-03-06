@@ -1,52 +1,10 @@
-
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { WhatsappLogo, Phone, Mail, MapPin } from "lucide-react";
-
-// Custom WhatsApp logo component
-const WhatsappLogo = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
-    <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z" />
-    <path d="M14 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z" />
-    <path d="M9.5 13.5c.5 1 1.5 1 2.5 1s2-.5 2.5-1" />
-  </svg>
-);
-
-// Custom Telegram logo component
-const TelegramLogo = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="m22 3-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 3" />
-    <path d="M2 3v14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V3" />
-    <path d="M6 8h12" />
-    <path d="M6 12h12" />
-    <path d="M6 16h6" />
-  </svg>
-);
+import { MessageCircle, Phone, Mail, MapPin } from "lucide-react";
 
 const ContactForm: React.FC = () => {
   const { toast } = useToast();
@@ -127,13 +85,13 @@ const ContactForm: React.FC = () => {
           <h4 className="font-semibold mb-2">Connect With Us</h4>
           <div className="flex space-x-3">
             <Button variant="outline" size="icon" className="rounded-full">
-              <WhatsappLogo />
-            </Button>
-            <Button variant="outline" size="icon" className="rounded-full">
-              <TelegramLogo />
+              <MessageCircle className="h-5 w-5" />
             </Button>
             <Button variant="outline" size="icon" className="rounded-full">
               <Mail className="h-5 w-5" />
+            </Button>
+            <Button variant="outline" size="icon" className="rounded-full">
+              <Phone className="h-5 w-5" />
             </Button>
           </div>
         </div>

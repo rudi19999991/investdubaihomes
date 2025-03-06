@@ -9,10 +9,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { useToast } from "@/hooks/use-toast";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [currentLanguage, setCurrentLanguage] = useState<{code: string, name: string}>({ code: "en", name: "English" });
   const location = useLocation();
+  const { toast } = useToast();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -38,6 +41,14 @@ const Navbar = () => {
     if (path === '/' && location.pathname === '/') return true;
     if (path !== '/' && location.pathname.startsWith(path)) return true;
     return false;
+  };
+
+  const handleLanguageChange = (lang: {code: string, name: string}) => {
+    setCurrentLanguage(lang);
+    toast({
+      title: "Language Changed",
+      description: `The website language has been changed to ${lang.name}`,
+    });
   };
 
   return (
@@ -70,21 +81,25 @@ const Navbar = () => {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="sm" className="flex items-center">
                   <Globe className="h-4 w-4 mr-1" />
-                  <span>EN</span>
+                  <span>{currentLanguage.code.toUpperCase()}</span>
                   <ChevronDown className="h-4 w-4 ml-1" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 {languages.map((lang) => (
-                  <DropdownMenuItem key={lang.code}>
+                  <DropdownMenuItem 
+                    key={lang.code}
+                    onClick={() => handleLanguageChange(lang)}
+                    className={currentLanguage.code === lang.code ? "bg-muted" : ""}
+                  >
                     {lang.name}
                   </DropdownMenuItem>
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
-            <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white">
-              Book Consultation
+            <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
+              <Link to="/contact">Book Consultation</Link>
             </Button>
           </div>
 
@@ -120,7 +135,13 @@ const Navbar = () => {
                 <p className="text-sm text-luxury-charcoal/70 mb-2">Language</p>
                 <div className="flex flex-wrap gap-2">
                   {languages.map((lang) => (
-                    <Button key={lang.code} variant="outline" size="sm">
+                    <Button 
+                      key={lang.code} 
+                      variant={currentLanguage.code === lang.code ? "default" : "outline"} 
+                      size="sm"
+                      onClick={() => handleLanguageChange(lang)}
+                      className={currentLanguage.code === lang.code ? "bg-luxury-gold text-white" : ""}
+                    >
                       {lang.name}
                     </Button>
                   ))}
@@ -130,8 +151,9 @@ const Navbar = () => {
               <Button 
                 className="bg-luxury-gold hover:bg-luxury-gold/90 text-white w-full mt-2"
                 onClick={() => setIsMenuOpen(false)}
+                asChild
               >
-                Book Consultation
+                <Link to="/contact">Book Consultation</Link>
               </Button>
             </div>
           </div>

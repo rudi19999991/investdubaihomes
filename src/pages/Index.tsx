@@ -61,7 +61,7 @@ const Index = () => {
         <HeroSection
           title="Luxury Property Investment in Dubai & Ras Al Khaimah"
           subtitle="Secure your future with high-ROI properties and tax-free returns in the UAE's most prestigious locations."
-          backgroundImage="https://images.unsplash.com/photo-1534614971-6be99a7a3ffd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          backgroundImage="https://images.unsplash.com/photo-1582398626929-4d39ff61ceaa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
         />
 
         <FeatureSection />
