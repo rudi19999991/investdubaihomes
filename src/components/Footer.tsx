@@ -115,15 +115,15 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} INVESTDUBAI. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-luxury-gold text-sm">
+              <Link to="/privacy" className="text-gray-400 hover:text-luxury-gold text-sm">
                 Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-luxury-gold text-sm">
+              </Link>
+              <Link to="/terms" className="text-gray-400 hover:text-luxury-gold text-sm">
                 Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-luxury-gold text-sm">
+              </Link>
+              <Link to="/cookies" className="text-gray-400 hover:text-luxury-gold text-sm">
                 Cookie Policy
-              </a>
+              </Link>
             </div>
           </div>
         </div>

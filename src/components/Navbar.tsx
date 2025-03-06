@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
 import {
@@ -12,6 +12,7 @@ import {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -32,6 +33,13 @@ const Navbar = () => {
     { code: "zh", name: "Chinese" },
   ];
 
+  // Helper function to determine if a link is active
+  const isActive = (path: string) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
+  };
+
   return (
     <nav className="fixed w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
       <div className="luxury-container">
@@ -48,7 +56,11 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-luxury-charcoal hover:text-luxury-gold transition-colors font-medium"
+                className={`transition-colors font-medium ${
+                  isActive(link.path)
+                    ? "text-luxury-gold"
+                    : "text-luxury-charcoal hover:text-luxury-gold"
+                }`}
               >
                 {link.name}
               </Link>
@@ -93,7 +105,11 @@ const Navbar = () => {
                 <Link
                   key={link.name}
                   to={link.path}
-                  className="text-luxury-charcoal hover:text-luxury-gold py-2 transition-colors"
+                  className={`py-2 transition-colors ${
+                    isActive(link.path)
+                      ? "text-luxury-gold"
+                      : "text-luxury-charcoal hover:text-luxury-gold"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.name}

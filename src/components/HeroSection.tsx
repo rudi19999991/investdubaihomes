@@ -2,6 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface HeroSectionProps {
   title: string;
@@ -39,16 +40,22 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <Button 
               size="lg" 
               className="bg-luxury-gold hover:bg-luxury-gold/90 text-white px-6"
+              asChild
             >
-              Explore Properties
-              <ChevronRight className="ml-2 h-4 w-4" />
+              <Link to="/properties">
+                Explore Properties
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
               className="border-white text-white hover:bg-white hover:text-luxury-navy"
+              asChild
             >
-              Book a Consultation
+              <Link to="/contact">
+                Book a Consultation
+              </Link>
             </Button>
           </div>
         )}
