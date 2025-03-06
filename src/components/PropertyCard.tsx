@@ -46,21 +46,23 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
       <div className="relative">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="h-64 w-full object-cover"
-        />
-        <Badge 
-          className={`absolute top-4 left-4 ${
-            status === "ready" ? "bg-green-600" : "bg-luxury-gold"
-          }`}
-        >
-          {status === "ready" ? "Ready to Move" : "Off-Plan"}
-        </Badge>
-        <div className="absolute bottom-4 right-4 bg-luxury-navy text-white px-3 py-1 rounded-full text-sm font-medium">
-          {roi}% ROI
-        </div>
+        <Link to={`/properties/${id}`}>
+          <img
+            src={imageUrl}
+            alt={title}
+            className="h-64 w-full object-cover"
+          />
+          <Badge 
+            className={`absolute top-4 left-4 ${
+              status === "ready" ? "bg-green-600" : "bg-luxury-gold"
+            }`}
+          >
+            {status === "ready" ? "Ready to Move" : "Off-Plan"}
+          </Badge>
+          <div className="absolute bottom-4 right-4 bg-luxury-navy text-white px-3 py-1 rounded-full text-sm font-medium">
+            {roi}% ROI
+          </div>
+        </Link>
       </div>
 
       <CardContent className="pt-6">
@@ -68,7 +70,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
           <MapPin className="h-4 w-4 mr-1" />
           <span>{location}</span>
         </div>
-        <h3 className="text-xl font-semibold mb-2 line-clamp-1">{title}</h3>
+        <Link to={`/properties/${id}`}>
+          <h3 className="text-xl font-semibold mb-2 line-clamp-1 hover:text-luxury-gold transition-colors">{title}</h3>
+        </Link>
         <p className="text-luxury-gold font-bold text-lg mb-4">
           {currency} {formattedPrice}
         </p>
