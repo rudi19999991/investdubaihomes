@@ -21,7 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
     <div
       className="relative h-screen min-h-[600px] flex items-center justify-center"
       style={{
-        backgroundImage: `url(${backgroundImage})`,
+        backgroundImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
