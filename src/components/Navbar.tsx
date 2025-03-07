@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
@@ -19,30 +19,72 @@ const languages = [
   { code: "zh", name: "Chinese" },
 ];
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+// Create language context
+export const LanguageContext = createContext({
+  currentLanguage: { code: "en", name: "English" },
+  setLanguage: (lang: {code: string, name: string}) => {},
+  translate: (key: string) => key,
+});
+
+// Language provider component
+export const LanguageProvider: React.FC<{children: React.ReactNode}> = ({ children }) => {
   const [currentLanguage, setCurrentLanguage] = useState<{code: string, name: string}>({ code: "en", name: "English" });
-  const location = useLocation();
   const { toast } = useToast();
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Properties", path: "/properties" },
-    { name: "ROI & Investment", path: "/roi" },
-    { name: "Company Setup", path: "/company-setup" },
-    { name: "Financing", path: "/financing" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  // Helper function to determine if a link is active
-  const isActive = (path: string) => {
-    if (path === '/' && location.pathname === '/') return true;
-    if (path !== '/' && location.pathname.startsWith(path)) return true;
-    return false;
+  
+  // Simplified translations (in real app, these would be much more extensive)
+  const translations: {[key: string]: {[key: string]: string}} = {
+    "en": {
+      "Home": "Home",
+      "Properties": "Properties",
+      "ROI & Investment": "ROI & Investment",
+      "Company Setup": "Company Setup",
+      "Financing": "Financing",
+      "Contact": "Contact",
+      "Book Consultation": "Book Consultation",
+      "Language Detected": "Language Detected",
+      "Language Changed": "Language Changed",
+      "browserLangMessage": "Your browser language has been automatically selected.",
+      "langChangeMessage": "The website language has been changed to"
+    },
+    "de": {
+      "Home": "Startseite",
+      "Properties": "Immobilien",
+      "ROI & Investment": "ROI & Investition",
+      "Company Setup": "Firmengründung",
+      "Financing": "Finanzierung",
+      "Contact": "Kontakt",
+      "Book Consultation": "Beratung buchen",
+      "Language Detected": "Sprache erkannt",
+      "Language Changed": "Sprache geändert",
+      "browserLangMessage": "Ihre Browsersprache wurde automatisch ausgewählt.",
+      "langChangeMessage": "Die Website-Sprache wurde geändert zu"
+    },
+    "ru": {
+      "Home": "Главная",
+      "Properties": "Недвижимость",
+      "ROI & Investment": "ROI и Инвестиции",
+      "Company Setup": "Регистрация компании",
+      "Financing": "Финансирование",
+      "Contact": "Контакты",
+      "Book Consultation": "Записаться на консультацию",
+      "Language Detected": "Язык определен",
+      "Language Changed": "Язык изменен",
+      "browserLangMessage": "Язык вашего браузера был выбран автоматически.",
+      "langChangeMessage": "Язык сайта был изменен на"
+    },
+    "zh": {
+      "Home": "首页",
+      "Properties": "房产",
+      "ROI & Investment": "投资回报",
+      "Company Setup": "公司设立",
+      "Financing": "融资",
+      "Contact": "联系我们",
+      "Book Consultation": "预约咨询",
+      "Language Detected": "检测到语言",
+      "Language Changed": "语言已更改",
+      "browserLangMessage": "您的浏览器语言已被自动选择。",
+      "langChangeMessage": "网站语言已更改为"
+    }
   };
 
   // Detect browser language on component mount
@@ -56,8 +98,8 @@ const Navbar = () => {
       if (matchedLang) {
         setCurrentLanguage(matchedLang);
         toast({
-          title: "Language Detected",
-          description: `Your browser language (${matchedLang.name}) has been automatically selected.`,
+          title: translations[matchedLang.code]["Language Detected"] || "Language Detected",
+          description: translations[matchedLang.code]["browserLangMessage"] || "Your browser language has been automatically selected.",
         });
       }
     };
@@ -81,9 +123,53 @@ const Navbar = () => {
     localStorage.setItem('preferredLanguage', lang.code);
     
     toast({
-      title: "Language Changed",
-      description: `The website language has been changed to ${lang.name}`,
+      title: translations[lang.code]["Language Changed"] || "Language Changed",
+      description: `${translations[lang.code]["langChangeMessage"] || "The website language has been changed to"} ${lang.name}`,
     });
+  };
+
+  // Translation function
+  const translate = (key: string) => {
+    return translations[currentLanguage.code]?.[key] || key;
+  };
+
+  return (
+    <LanguageContext.Provider value={{ 
+      currentLanguage,
+      setLanguage: handleLanguageChange,
+      translate 
+    }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+
+// Custom hook for using language
+export const useLanguage = () => useContext(LanguageContext);
+
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const { currentLanguage, setLanguage, translate } = useLanguage();
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "Properties", path: "/properties" },
+    { name: "ROI & Investment", path: "/roi" },
+    { name: "Company Setup", path: "/company-setup" },
+    { name: "Financing", path: "/financing" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  // Helper function to determine if a link is active
+  const isActive = (path: string) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
@@ -108,7 +194,7 @@ const Navbar = () => {
                     : "text-luxury-charcoal hover:text-luxury-gold"
                 }`}
               >
-                {link.name}
+                {translate(link.name)}
               </Link>
             ))}
 
@@ -124,7 +210,7 @@ const Navbar = () => {
                 {languages.map((lang) => (
                   <DropdownMenuItem 
                     key={lang.code}
-                    onClick={() => handleLanguageChange(lang)}
+                    onClick={() => setLanguage(lang)}
                     className={currentLanguage.code === lang.code ? "bg-muted" : ""}
                   >
                     {lang.name}
@@ -134,7 +220,7 @@ const Navbar = () => {
             </DropdownMenu>
 
             <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
-              <Link to="/contact">Book Consultation</Link>
+              <Link to="/contact">{translate("Book Consultation")}</Link>
             </Button>
           </div>
 
@@ -162,7 +248,7 @@ const Navbar = () => {
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link.name}
+                  {translate(link.name)}
                 </Link>
               ))}
               
@@ -174,7 +260,7 @@ const Navbar = () => {
                       key={lang.code} 
                       variant={currentLanguage.code === lang.code ? "default" : "outline"} 
                       size="sm"
-                      onClick={() => handleLanguageChange(lang)}
+                      onClick={() => setLanguage(lang)}
                       className={currentLanguage.code === lang.code ? "bg-luxury-gold text-white" : ""}
                     >
                       {lang.name}
@@ -188,7 +274,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
                 asChild
               >
-                <Link to="/contact">Book Consultation</Link>
+                <Link to="/contact">{translate("Book Consultation")}</Link>
               </Button>
             </div>
           </div>

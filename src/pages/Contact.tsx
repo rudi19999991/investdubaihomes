@@ -41,11 +41,11 @@ const Contact = () => {
         </div>
         
         {/* Contact Information + Form */}
-        <section className="py-16">
+        <section className="py-16 bg-gray-50">
           <div className="luxury-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Contact Information */}
-              <div>
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
                 <div className="gold-separator" />
                 
@@ -127,7 +127,7 @@ const Contact = () => {
         </section>
         
         {/* Map Section */}
-        <section className="py-12 bg-gray-50">
+        <section className="py-12">
           <div className="luxury-container">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold">Visit Our Office</h2>

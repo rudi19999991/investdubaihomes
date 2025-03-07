@@ -147,6 +147,7 @@ const Properties = () => {
         <HeroSection
           title="Explore Our Properties"
           subtitle="Find your perfect investment opportunity in Dubai & Ras Al Khaimah"
+          videoUrl="https://player.vimeo.com/external/367892685.sd.mp4?s=a376c6a45d95db6143fc54c0d225565bcd684eba&profile_id=164&oauth2_token_id=57447761"
           backgroundImage="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           showCta={false}
         />

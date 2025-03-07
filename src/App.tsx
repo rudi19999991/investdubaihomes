@@ -12,27 +12,30 @@ import CompanySetup from "./pages/CompanySetup";
 import Contact from "./pages/Contact";
 import Financing from "./pages/Financing";
 import NotFound from "./pages/NotFound";
+import { LanguageProvider } from "./components/Navbar";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/properties" element={<Properties />} />
-          <Route path="/properties/:id" element={<PropertyDetail />} />
-          <Route path="/roi" element={<ROI />} />
-          <Route path="/company-setup" element={<CompanySetup />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/financing" element={<Financing />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <LanguageProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/properties" element={<Properties />} />
+            <Route path="/properties/:id" element={<PropertyDetail />} />
+            <Route path="/roi" element={<ROI />} />
+            <Route path="/company-setup" element={<CompanySetup />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/financing" element={<Financing />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
