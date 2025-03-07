@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Search, Building, MapPin, DollarSign, Percent } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FilterProps {
   onFilter: (filters: FilterOptions) => void;
@@ -27,6 +28,7 @@ interface FilterOptions {
 }
 
 const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
+  const { translate } = useLanguage();
   const [filters, setFilters] = useState<FilterOptions>({
     priceRange: [500000, 10000000],
     location: "",
@@ -56,7 +58,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
       <h3 className="text-xl font-semibold mb-6 flex items-center">
-        <Search className="mr-2 h-5 w-5 text-luxury-gold" /> Find Your Ideal Investment
+        <Search className="mr-2 h-5 w-5 text-luxury-gold" /> {translate("Find Your Ideal Investment")}
       </h3>
       
       <form onSubmit={handleSubmit}>
@@ -65,7 +67,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           <div className="lg:col-span-3">
             <div className="flex items-center justify-between mb-2">
               <Label className="flex items-center">
-                <DollarSign className="h-4 w-4 mr-1 text-luxury-navy" /> Price Range
+                <DollarSign className="h-4 w-4 mr-1 text-luxury-navy" /> {translate("Price Range")}
               </Label>
               <span className="text-sm text-muted-foreground">
                 {formatPrice(filters.priceRange[0])} - {formatPrice(filters.priceRange[1])}
@@ -85,22 +87,22 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           {/* Location */}
           <div>
             <Label htmlFor="location" className="flex items-center">
-              <MapPin className="h-4 w-4 mr-1 text-luxury-navy" /> Location
+              <MapPin className="h-4 w-4 mr-1 text-luxury-navy" /> {translate("Location")}
             </Label>
             <Select
               value={filters.location}
               onValueChange={(value) => setFilters({ ...filters, location: value })}
             >
               <SelectTrigger id="location" className="mt-2">
-                <SelectValue placeholder="All Locations" />
+                <SelectValue placeholder={translate("All Locations")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Locations</SelectItem>
-                <SelectItem value="dubai-marina">Dubai Marina</SelectItem>
-                <SelectItem value="downtown-dubai">Downtown Dubai</SelectItem>
-                <SelectItem value="palm-jumeirah">Palm Jumeirah</SelectItem>
-                <SelectItem value="dubai-hills">Dubai Hills</SelectItem>
-                <SelectItem value="rak">Ras Al Khaimah</SelectItem>
+                <SelectItem value="all">{translate("All Locations")}</SelectItem>
+                <SelectItem value="dubai-marina">{translate("Dubai Marina")}</SelectItem>
+                <SelectItem value="downtown-dubai">{translate("Downtown Dubai")}</SelectItem>
+                <SelectItem value="palm-jumeirah">{translate("Palm Jumeirah")}</SelectItem>
+                <SelectItem value="dubai-hills">{translate("Dubai Hills")}</SelectItem>
+                <SelectItem value="rak">{translate("Ras Al Khaimah")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -108,21 +110,21 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           {/* Property Type */}
           <div>
             <Label htmlFor="property-type" className="flex items-center">
-              <Building className="h-4 w-4 mr-1 text-luxury-navy" /> Property Type
+              <Building className="h-4 w-4 mr-1 text-luxury-navy" /> {translate("Property Type")}
             </Label>
             <Select
               value={filters.propertyType}
               onValueChange={(value) => setFilters({ ...filters, propertyType: value })}
             >
               <SelectTrigger id="property-type" className="mt-2">
-                <SelectValue placeholder="All Types" />
+                <SelectValue placeholder={translate("All Types")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Types</SelectItem>
-                <SelectItem value="apartment">Apartment</SelectItem>
-                <SelectItem value="villa">Villa</SelectItem>
-                <SelectItem value="penthouse">Penthouse</SelectItem>
-                <SelectItem value="townhouse">Townhouse</SelectItem>
+                <SelectItem value="all">{translate("All Types")}</SelectItem>
+                <SelectItem value="apartment">{translate("Apartment")}</SelectItem>
+                <SelectItem value="villa">{translate("Villa")}</SelectItem>
+                <SelectItem value="penthouse">{translate("Penthouse")}</SelectItem>
+                <SelectItem value="townhouse">{translate("Townhouse")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -130,21 +132,21 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           {/* Bedrooms */}
           <div>
             <Label htmlFor="bedrooms" className="flex items-center">
-              Bedrooms
+              {translate("Bedrooms")}
             </Label>
             <Select
               value={filters.bedrooms}
               onValueChange={(value) => setFilters({ ...filters, bedrooms: value })}
             >
               <SelectTrigger id="bedrooms" className="mt-2">
-                <SelectValue placeholder="Any" />
+                <SelectValue placeholder={translate("Any")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">Any</SelectItem>
+                <SelectItem value="any">{translate("Any")}</SelectItem>
                 <SelectItem value="1">1</SelectItem>
                 <SelectItem value="2">2</SelectItem>
                 <SelectItem value="3">3</SelectItem>
-                <SelectItem value="4">4+</SelectItem>
+                <SelectItem value="4+">4+</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -152,19 +154,19 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           {/* Status */}
           <div>
             <Label htmlFor="status" className="flex items-center">
-              Status
+              {translate("Status")}
             </Label>
             <Select
               value={filters.status}
               onValueChange={(value) => setFilters({ ...filters, status: value })}
             >
               <SelectTrigger id="status" className="mt-2">
-                <SelectValue placeholder="All Properties" />
+                <SelectValue placeholder={translate("All Properties")} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Properties</SelectItem>
-                <SelectItem value="ready">Ready</SelectItem>
-                <SelectItem value="offplan">Off-Plan</SelectItem>
+                <SelectItem value="all">{translate("All Properties")}</SelectItem>
+                <SelectItem value="ready">{translate("Ready")}</SelectItem>
+                <SelectItem value="offplan">{translate("Off-Plan")}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -173,7 +175,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
           <div>
             <div className="flex items-center justify-between mb-2">
               <Label className="flex items-center">
-                <Percent className="h-4 w-4 mr-1 text-luxury-navy" /> Minimum ROI
+                <Percent className="h-4 w-4 mr-1 text-luxury-navy" /> {translate("Minimum ROI")}
               </Label>
               <span className="text-sm text-muted-foreground">
                 {filters.minRoi}%
@@ -192,7 +194,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
         </div>
 
         <Button type="submit" className="w-full mt-6 bg-luxury-navy hover:bg-luxury-navy/90">
-          Search Properties
+          {translate("Search Properties")}
         </Button>
       </form>
     </div>

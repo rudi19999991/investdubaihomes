@@ -5,6 +5,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { MapPin, Building, Bed, Bath, Home, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export interface PropertyProps {
   id: string;
@@ -26,6 +27,7 @@ interface PropertyCardProps {
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
+  const { translate } = useLanguage();
   const {
     id,
     title,
@@ -57,10 +59,10 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
               status === "ready" ? "bg-green-600" : "bg-luxury-gold"
             }`}
           >
-            {status === "ready" ? "Ready to Move" : "Off-Plan"}
+            {status === "ready" ? translate("Ready to Move") : translate("Off-Plan")}
           </Badge>
           <div className="absolute bottom-4 right-4 bg-luxury-navy text-white px-3 py-1 rounded-full text-sm font-medium">
-            {roi}% ROI
+            {roi}% {translate("ROI")}
           </div>
         </Link>
       </div>
@@ -80,15 +82,15 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         <div className="grid grid-cols-3 gap-2 text-sm">
           <div className="flex items-center">
             <Bed className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{bedrooms} Beds</span>
+            <span>{bedrooms} {translate("Beds")}</span>
           </div>
           <div className="flex items-center">
             <Bath className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{bathrooms} Baths</span>
+            <span>{bathrooms} {translate("Baths")}</span>
           </div>
           <div className="flex items-center">
             <Home className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{area} sqft</span>
+            <span>{area} {translate("sqft")}</span>
           </div>
         </div>
       </CardContent>
@@ -99,7 +101,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
           className="w-full bg-luxury-navy hover:bg-luxury-navy/90"
         >
           <Link to={`/properties/${id}`}>
-            View Details
+            {translate("View Details")}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>

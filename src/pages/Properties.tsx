@@ -109,21 +109,29 @@ const Properties = () => {
       property.price <= activeFilters.priceRange[1];
       
     const matchesLocation = activeFilters.location
-      ? property.location.toLowerCase().includes(activeFilters.location.toLowerCase())
+      ? activeFilters.location === "all" 
+        ? true
+        : property.location.toLowerCase().includes(activeFilters.location.toLowerCase())
       : true;
       
     const matchesType = activeFilters.propertyType
-      ? property.type.toLowerCase() === activeFilters.propertyType.toLowerCase()
+      ? activeFilters.propertyType === "all"
+        ? true
+        : property.type.toLowerCase() === activeFilters.propertyType.toLowerCase()
       : true;
       
     const matchesBedrooms = activeFilters.bedrooms
-      ? activeFilters.bedrooms === "4+"
-        ? property.bedrooms >= 4
-        : property.bedrooms === parseInt(activeFilters.bedrooms)
+      ? activeFilters.bedrooms === "any"
+        ? true
+        : activeFilters.bedrooms === "4+"
+          ? property.bedrooms >= 4
+          : property.bedrooms === parseInt(activeFilters.bedrooms)
       : true;
       
     const matchesStatus = activeFilters.status
-      ? property.status === activeFilters.status
+      ? activeFilters.status === "all"
+        ? true
+        : property.status === activeFilters.status
       : true;
       
     const matchesRoi = property.roi >= activeFilters.minRoi;
