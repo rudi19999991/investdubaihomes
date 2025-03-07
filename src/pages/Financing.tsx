@@ -1,10 +1,11 @@
+
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Bank, FileSearch, Scale, Handshake } from "lucide-react";
+import { CircleDollarSign, FileSearch, Scale, Handshake } from "lucide-react";
 
 const Financing = () => {
   return (
@@ -34,7 +35,7 @@ const Financing = () => {
                 <div className="space-y-6">
                   <div className="flex items-start">
                     <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
-                      <Bank className="h-6 w-6 text-luxury-navy" />
+                      <CircleDollarSign className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">Mortgage Options</h3>
@@ -157,3 +158,4 @@ const Financing = () => {
 };
 
 export default Financing;
+
