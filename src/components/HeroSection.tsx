@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 interface HeroSectionProps {
   title: string;
   subtitle: string;
+  videoUrl?: string;
   backgroundImage?: string;
   showCta?: boolean;
 }
@@ -14,19 +15,37 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
-  backgroundImage = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80", // Default Dubai skyline image
+  videoUrl = "https://player.vimeo.com/external/409409657.sd.mp4?s=7df8c5666a9e013fea27cb07e52c5993b90b4445&profile_id=139&oauth2_token_id=57447761", // Default Dubai video
+  backgroundImage = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80", // Default Dubai skyline image (fallback)
   showCta = true,
 }) => {
   return (
     <div
       className="relative h-screen min-h-[600px] flex items-center justify-center"
-      style={{
-        backgroundImage: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      <div className="absolute inset-0 hero-gradient" />
+      <div className="absolute inset-0 overflow-hidden">
+        <video 
+          className="w-full h-full object-cover" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          poster={backgroundImage}
+        >
+          <source src={videoUrl} type="video/mp4" />
+          {/* Fallback for browsers that don't support video */}
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${backgroundImage})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
+        </video>
+        <div className="absolute inset-0 bg-luxury-navy/60" />
+      </div>
+
       <div className="relative z-10 text-white text-center px-4 max-w-4xl mx-auto">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
           {title}

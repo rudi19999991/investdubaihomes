@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Globe } from "lucide-react";
@@ -10,6 +10,14 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from "@/hooks/use-toast";
+
+// Language options
+const languages = [
+  { code: "en", name: "English" },
+  { code: "de", name: "German" },
+  { code: "ru", name: "Russian" },
+  { code: "zh", name: "Chinese" },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,14 +34,8 @@ const Navbar = () => {
     { name: "Properties", path: "/properties" },
     { name: "ROI & Investment", path: "/roi" },
     { name: "Company Setup", path: "/company-setup" },
+    { name: "Financing", path: "/financing" },
     { name: "Contact", path: "/contact" },
-  ];
-
-  const languages = [
-    { code: "en", name: "English" },
-    { code: "de", name: "German" },
-    { code: "ru", name: "Russian" },
-    { code: "zh", name: "Chinese" },
   ];
 
   // Helper function to determine if a link is active
@@ -43,8 +45,41 @@ const Navbar = () => {
     return false;
   };
 
+  // Detect browser language on component mount
+  useEffect(() => {
+    const detectBrowserLanguage = () => {
+      const browserLang = navigator.language.split('-')[0]; // Get language code (e.g., "en" from "en-US")
+      
+      // Find matching language in our supported languages
+      const matchedLang = languages.find(lang => lang.code === browserLang);
+      
+      if (matchedLang) {
+        setCurrentLanguage(matchedLang);
+        toast({
+          title: "Language Detected",
+          description: `Your browser language (${matchedLang.name}) has been automatically selected.`,
+        });
+      }
+    };
+    
+    // Only detect language if it hasn't been manually set before
+    if (!localStorage.getItem('preferredLanguage')) {
+      detectBrowserLanguage();
+    } else {
+      // If there's a saved preference, use that
+      const savedLang = localStorage.getItem('preferredLanguage');
+      const matchedLang = languages.find(lang => lang.code === savedLang);
+      if (matchedLang) {
+        setCurrentLanguage(matchedLang);
+      }
+    }
+  }, []);
+
   const handleLanguageChange = (lang: {code: string, name: string}) => {
     setCurrentLanguage(lang);
+    // Save preference
+    localStorage.setItem('preferredLanguage', lang.code);
+    
     toast({
       title: "Language Changed",
       description: `The website language has been changed to ${lang.name}`,
