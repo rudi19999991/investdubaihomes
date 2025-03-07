@@ -1,13 +1,44 @@
 
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { CircleDollarSign, FileSearch, Scale, Handshake } from "lucide-react";
+import { CircleDollarSign, FileSearch, Scale, Handshake, Calculator } from "lucide-react";
+import { useToast } from "@/components/ui/use-toast";
 
 const Financing = () => {
+  const { toast } = useToast();
+  const [propertyPrice, setPropertyPrice] = useState<number>(1500000);
+  const [downPayment, setDownPayment] = useState<number>(25);
+  const [interestRate, setInterestRate] = useState<number>(4.5);
+  const [loanTerm, setLoanTerm] = useState<number>(20);
+  const [monthlyPayment, setMonthlyPayment] = useState<number | null>(null);
+
+  const handleCalculate = () => {
+    // Calculate loan amount
+    const loanAmount = propertyPrice * (1 - downPayment / 100);
+    
+    // Convert annual interest rate to monthly and decimal
+    const monthlyInterestRate = interestRate / 100 / 12;
+    
+    // Calculate number of payments
+    const numberOfPayments = loanTerm * 12;
+    
+    // Calculate monthly payment using the mortgage formula
+    const monthlyPaymentValue = loanAmount * 
+      (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, numberOfPayments)) / 
+      (Math.pow(1 + monthlyInterestRate, numberOfPayments) - 1);
+    
+    setMonthlyPayment(monthlyPaymentValue);
+    
+    toast({
+      title: "Mortgage Calculation Complete",
+      description: `Your estimated monthly payment is AED ${monthlyPaymentValue.toLocaleString('en-US', { maximumFractionDigits: 0 })}`,
+    });
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -103,6 +134,8 @@ const Financing = () => {
                       id="property-price"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-luxury-gold focus:ring-luxury-gold sm:text-sm"
                       placeholder="1,500,000"
+                      value={propertyPrice}
+                      onChange={(e) => setPropertyPrice(Number(e.target.value))}
                     />
                   </div>
                   
@@ -115,6 +148,10 @@ const Financing = () => {
                       id="down-payment"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-luxury-gold focus:ring-luxury-gold sm:text-sm"
                       placeholder="25"
+                      value={downPayment}
+                      onChange={(e) => setDownPayment(Number(e.target.value))}
+                      min="0"
+                      max="100"
                     />
                   </div>
                   
@@ -127,6 +164,10 @@ const Financing = () => {
                       id="interest-rate"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-luxury-gold focus:ring-luxury-gold sm:text-sm"
                       placeholder="4.5"
+                      value={interestRate}
+                      onChange={(e) => setInterestRate(Number(e.target.value))}
+                      min="0"
+                      step="0.1"
                     />
                   </div>
                   
@@ -139,12 +180,30 @@ const Financing = () => {
                       id="loan-term"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-luxury-gold focus:ring-luxury-gold sm:text-sm"
                       placeholder="20"
+                      value={loanTerm}
+                      onChange={(e) => setLoanTerm(Number(e.target.value))}
+                      min="1"
+                      max="30"
                     />
                   </div>
                   
-                  <Button className="w-full bg-luxury-navy hover:bg-luxury-navy/90">
+                  <Button className="w-full bg-luxury-navy hover:bg-luxury-navy/90" onClick={handleCalculate}>
                     Calculate Monthly Payment
                   </Button>
+                  
+                  {monthlyPayment !== null && (
+                    <div className="mt-4 p-4 bg-gray-100 rounded-md">
+                      <h3 className="text-lg font-medium mb-2">Estimated Monthly Payment</h3>
+                      <p className="text-2xl font-bold text-luxury-gold">
+                        AED {monthlyPayment.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                      </p>
+                      <div className="mt-2 space-y-1 text-sm text-gray-600">
+                        <p>Total Loan Amount: AED {(propertyPrice * (1 - downPayment / 100)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>Total Interest: AED {((monthlyPayment * loanTerm * 12) - (propertyPrice * (1 - downPayment / 100))).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>Total Payment: AED {(monthlyPayment * loanTerm * 12).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -158,4 +217,3 @@ const Financing = () => {
 };
 
 export default Financing;
-
