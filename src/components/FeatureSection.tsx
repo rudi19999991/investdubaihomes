@@ -1,6 +1,7 @@
 
 import React from "react";
 import { Building, TrendingUp, CreditCard, Briefcase } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface FeatureProps {
   icon: React.ReactNode;
@@ -21,30 +22,32 @@ const Feature: React.FC<FeatureProps> = ({ icon, title, description }) => {
 };
 
 const FeatureSection: React.FC = () => {
+  const { translate } = useLanguage();
+  
   const features = [
     {
       icon: <Building size={32} />,
-      title: "Premium Properties",
+      title: translate("Premium Properties"),
       description:
-        "Explore luxury ready properties and off-plan launches in Dubai's most prestigious locations.",
+        translate("Explore luxury ready properties and off-plan launches in Dubai's most prestigious locations."),
     },
     {
       icon: <TrendingUp size={32} />,
-      title: "High ROI",
+      title: translate("High ROI"),
       description:
-        "Benefit from tax-free investments with returns of 6-10% annually in Dubai's thriving market.",
+        translate("Benefit from tax-free investments with returns of 6-10% annually in Dubai's thriving market."),
     },
     {
       icon: <CreditCard size={32} />,
-      title: "Crypto Payments",
+      title: translate("Crypto Payments"),
       description:
-        "Seamlessly purchase properties using cryptocurrency with our secure platform.",
+        translate("Seamlessly purchase properties using cryptocurrency with our secure platform."),
     },
     {
       icon: <Briefcase size={32} />,
-      title: "Company Setup",
+      title: translate("Company Setup"),
       description:
-        "Establish your business in UAE's prominent freezones with 100% foreign ownership.",
+        translate("Establish your business in UAE's prominent freezones with 100% foreign ownership."),
     },
   ];
 
@@ -53,12 +56,11 @@ const FeatureSection: React.FC = () => {
       <div className="luxury-container">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Why Invest in Dubai & RAK
+            {translate("Why Invest in Dubai & RAK")}
           </h2>
           <div className="gold-separator mx-auto" />
           <p className="text-gray-600 max-w-3xl mx-auto">
-            Dubai and Ras Al Khaimah offer unparalleled investment opportunities with
-            tax-free income, high rental yields, and strong appreciation potential.
+            {translate("Dubai and Ras Al Khaimah offer unparalleled investment opportunities with tax-free income, high rental yields, and strong appreciation potential.")}
           </p>
         </div>
 

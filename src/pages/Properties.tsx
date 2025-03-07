@@ -5,8 +5,11 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import PropertyFilter from "@/components/PropertyFilter";
 import PropertyCard, { PropertyProps } from "@/components/PropertyCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Properties = () => {
+  const { translate } = useLanguage();
+  
   // Filter state
   const [activeFilters, setActiveFilters] = useState({
     priceRange: [500000, 10000000],
@@ -145,8 +148,8 @@ const Properties = () => {
       
       <main className="flex-grow pt-20">
         <HeroSection
-          title="Explore Our Properties"
-          subtitle="Find your perfect investment opportunity in Dubai & Ras Al Khaimah"
+          title={translate("Explore Our Properties")}
+          subtitle={translate("Find your perfect investment")}
           videoUrl="https://player.vimeo.com/external/367892685.sd.mp4?s=a376c6a45d95db6143fc54c0d225565bcd684eba&profile_id=164&oauth2_token_id=57447761"
           backgroundImage="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           showCta={false}
@@ -158,7 +161,7 @@ const Properties = () => {
             
             <div className="mt-12">
               <h2 className="text-2xl font-bold mb-6">
-                {filteredProperties.length} Properties Found
+                {filteredProperties.length} {translate("Properties Found")}
               </h2>
               
               {filteredProperties.length > 0 ? (
@@ -169,9 +172,9 @@ const Properties = () => {
                 </div>
               ) : (
                 <div className="text-center py-12 bg-gray-50 rounded-lg">
-                  <h3 className="text-xl font-semibold mb-2">No properties found</h3>
+                  <h3 className="text-xl font-semibold mb-2">{translate("No properties found")}</h3>
                   <p className="text-gray-600">
-                    Try adjusting your filters to see more results
+                    {translate("Try adjusting your filters")}
                   </p>
                 </div>
               )}

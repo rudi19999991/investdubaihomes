@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HeroSectionProps {
   title: string;
@@ -19,6 +20,8 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   backgroundImage = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80", // Default Dubai skyline image (fallback)
   showCta = true,
 }) => {
+  const { translate } = useLanguage();
+  
   return (
     <div
       className="relative h-screen min-h-[600px] flex items-center justify-center"
@@ -62,7 +65,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               asChild
             >
               <Link to="/properties">
-                Explore Properties
+                {translate("Properties")}
                 <ChevronRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
@@ -73,7 +76,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
               asChild
             >
               <Link to="/contact">
-                Book a Consultation
+                {translate("Book Consultation")}
               </Link>
             </Button>
           </div>

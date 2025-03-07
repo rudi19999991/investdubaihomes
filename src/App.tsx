@@ -12,7 +12,7 @@ import CompanySetup from "./pages/CompanySetup";
 import Contact from "./pages/Contact";
 import Financing from "./pages/Financing";
 import NotFound from "./pages/NotFound";
-import { LanguageProvider } from "./components/Navbar";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
 

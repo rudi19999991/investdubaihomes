@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { CircleDollarSign, FileSearch, Scale, Handshake, Calculator } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Financing = () => {
   const { toast } = useToast();
+  const { translate } = useLanguage();
   const [propertyPrice, setPropertyPrice] = useState<number>(1500000);
   const [downPayment, setDownPayment] = useState<number>(25);
   const [interestRate, setInterestRate] = useState<number>(4.5);
@@ -34,8 +36,8 @@ const Financing = () => {
     setMonthlyPayment(monthlyPaymentValue);
     
     toast({
-      title: "Mortgage Calculation Complete",
-      description: `Your estimated monthly payment is AED ${monthlyPaymentValue.toLocaleString('en-US', { maximumFractionDigits: 0 })}`,
+      title: translate("Mortgage Calculation Complete"),
+      description: `${translate("Your estimated monthly payment is AED")} ${monthlyPaymentValue.toLocaleString('en-US', { maximumFractionDigits: 0 })}`,
     });
   };
 
@@ -45,8 +47,8 @@ const Financing = () => {
       
       <main className="flex-grow pt-20">
         <HeroSection
-          title="Property Financing Options"
-          subtitle="Explore mortgage and financing solutions for international investors"
+          title={translate("Property Financing Options")}
+          subtitle={translate("Explore mortgage and financing")}
           videoUrl="https://player.vimeo.com/external/371865381.sd.mp4?s=5229ddd1a93a2daeb3e1acc49187664b43d0bfd3&profile_id=139&oauth2_token_id=57447761"
           backgroundImage="https://images.unsplash.com/photo-1604756228445-7419dbd85e7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           showCta={false}
@@ -57,10 +59,10 @@ const Financing = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Financing Information */}
               <div>
-                <h2 className="text-3xl font-bold mb-4">Financing Your Dubai Property</h2>
+                <h2 className="text-3xl font-bold mb-4">{translate("Financing Your Dubai Property")}</h2>
                 <div className="gold-separator" />
                 <p className="text-gray-600 mb-6">
-                  Navigating the financing options for international property investments can be complex. We're here to simplify the process and help you find the best solutions.
+                  {translate("Navigating the financing options")}
                 </p>
                 
                 <div className="space-y-6">
@@ -69,9 +71,9 @@ const Financing = () => {
                       <CircleDollarSign className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Mortgage Options</h3>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Mortgage Options")}</h3>
                       <p className="text-gray-600">
-                        Explore a range of mortgage products from local and international banks, tailored to non-resident investors.
+                        {translate("Explore a range of mortgage")}
                       </p>
                     </div>
                   </div>
@@ -81,9 +83,9 @@ const Financing = () => {
                       <FileSearch className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Eligibility Criteria</h3>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Eligibility Criteria")}</h3>
                       <p className="text-gray-600">
-                        Understand the key criteria for mortgage approval, including credit history, income verification, and property valuation.
+                        {translate("Understand the key criteria")}
                       </p>
                     </div>
                   </div>
@@ -93,9 +95,9 @@ const Financing = () => {
                       <Scale className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Loan-to-Value (LTV)</h3>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Loan-to-Value (LTV)")}</h3>
                       <p className="text-gray-600">
-                        Learn about typical LTV ratios for non-resident mortgages in Dubai and how they impact your down payment requirements.
+                        {translate("Learn about typical LTV")}
                       </p>
                     </div>
                   </div>
@@ -105,9 +107,9 @@ const Financing = () => {
                       <Handshake className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">Our Financing Partners</h3>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Our Financing Partners")}</h3>
                       <p className="text-gray-600">
-                        We work with leading banks and financial institutions to offer you competitive rates and flexible financing solutions.
+                        {translate("We work with leading banks")}
                       </p>
                     </div>
                   </div>
@@ -115,19 +117,19 @@ const Financing = () => {
                 
                 <Button asChild className="mt-8 bg-luxury-gold hover:bg-luxury-gold/90">
                   <Link to="/contact">
-                    Get Personalized Financing Advice
+                    {translate("Get Personalized Financing Advice")}
                   </Link>
                 </Button>
               </div>
               
               {/* Mortgage Calculator */}
               <div className="bg-white p-8 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-6">Mortgage Calculator</h2>
+                <h2 className="text-2xl font-bold mb-6">{translate("Mortgage Calculator")}</h2>
                 
                 <div className="space-y-4">
                   <div>
                     <label htmlFor="property-price" className="block text-sm font-medium text-gray-700">
-                      Property Price (AED)
+                      {translate("Property Price (AED)")}
                     </label>
                     <input
                       type="number"
@@ -141,7 +143,7 @@ const Financing = () => {
                   
                   <div>
                     <label htmlFor="down-payment" className="block text-sm font-medium text-gray-700">
-                      Down Payment (%)
+                      {translate("Down Payment (%)")}
                     </label>
                     <input
                       type="number"
@@ -157,7 +159,7 @@ const Financing = () => {
                   
                   <div>
                     <label htmlFor="interest-rate" className="block text-sm font-medium text-gray-700">
-                      Interest Rate (%)
+                      {translate("Interest Rate (%)")}
                     </label>
                     <input
                       type="number"
@@ -173,7 +175,7 @@ const Financing = () => {
                   
                   <div>
                     <label htmlFor="loan-term" className="block text-sm font-medium text-gray-700">
-                      Loan Term (Years)
+                      {translate("Loan Term (Years)")}
                     </label>
                     <input
                       type="number"
@@ -188,19 +190,19 @@ const Financing = () => {
                   </div>
                   
                   <Button className="w-full bg-luxury-navy hover:bg-luxury-navy/90" onClick={handleCalculate}>
-                    Calculate Monthly Payment
+                    {translate("Calculate Monthly Payment")}
                   </Button>
                   
                   {monthlyPayment !== null && (
                     <div className="mt-4 p-4 bg-gray-100 rounded-md">
-                      <h3 className="text-lg font-medium mb-2">Estimated Monthly Payment</h3>
+                      <h3 className="text-lg font-medium mb-2">{translate("Estimated Monthly Payment")}</h3>
                       <p className="text-2xl font-bold text-luxury-gold">
                         AED {monthlyPayment.toLocaleString('en-US', { maximumFractionDigits: 0 })}
                       </p>
                       <div className="mt-2 space-y-1 text-sm text-gray-600">
-                        <p>Total Loan Amount: AED {(propertyPrice * (1 - downPayment / 100)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
-                        <p>Total Interest: AED {((monthlyPayment * loanTerm * 12) - (propertyPrice * (1 - downPayment / 100))).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
-                        <p>Total Payment: AED {(monthlyPayment * loanTerm * 12).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>{translate("Total Loan Amount")}: AED {(propertyPrice * (1 - downPayment / 100)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>{translate("Total Interest")}: AED {((monthlyPayment * loanTerm * 12) - (propertyPrice * (1 - downPayment / 100))).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>{translate("Total Payment")}: AED {(monthlyPayment * loanTerm * 12).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
                       </div>
                     </div>
                   )}
