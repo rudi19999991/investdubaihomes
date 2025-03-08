@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import CurrencySelector from "./CurrencySelector";
 
 const Footer = () => {
   const { translate } = useLanguage();
@@ -17,9 +18,9 @@ const Footer = () => {
               <span className="text-luxury-gold">INVEST</span>DUBAI
             </h3>
             <p className="text-gray-300 mb-4">
-              {translate("Your premier partner")}
+              {translate("Your premier partner for luxury property investments in Dubai and Ras Al Khaimah.")}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 mb-4">
               <a href="#" className="text-gray-300 hover:text-luxury-gold">
                 <Instagram size={20} />
               </a>
@@ -33,12 +34,18 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
             </div>
+            <CurrencySelector />
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="text-xl font-bold mb-4">{translate("Quick Links")}</h4>
             <ul className="space-y-2">
+              <li>
+                <Link to="/" className="text-gray-300 hover:text-luxury-gold">
+                  {translate("Home")}
+                </Link>
+              </li>
               <li>
                 <Link to="/properties" className="text-gray-300 hover:text-luxury-gold">
                   {translate("Properties")}
@@ -52,6 +59,21 @@ const Footer = () => {
               <li>
                 <Link to="/company-setup" className="text-gray-300 hover:text-luxury-gold">
                   {translate("Company Setup")}
+                </Link>
+              </li>
+              <li>
+                <Link to="/financing" className="text-gray-300 hover:text-luxury-gold">
+                  {translate("Financing")}
+                </Link>
+              </li>
+              <li>
+                <Link to="/crypto-buying" className="text-gray-300 hover:text-luxury-gold">
+                  {translate("Crypto Buying")}
+                </Link>
+              </li>
+              <li>
+                <Link to="/blog" className="text-gray-300 hover:text-luxury-gold">
+                  {translate("Blog")}
                 </Link>
               </li>
               <li>

@@ -10,6 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLanguage, languages } from "@/contexts/LanguageContext";
+import CurrencySelector from "./CurrencySelector";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,6 +27,8 @@ const Navbar = () => {
     { name: "ROI & Investment", path: "/roi" },
     { name: "Company Setup", path: "/company-setup" },
     { name: "Financing", path: "/financing" },
+    { name: "Crypto Buying", path: "/crypto-buying" },
+    { name: "Blog", path: "/blog" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -47,7 +50,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -62,30 +65,34 @@ const Navbar = () => {
               </Link>
             ))}
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="flex items-center">
-                  <Globe className="h-4 w-4 mr-1" />
-                  <span>{currentLanguage.code.toUpperCase()}</span>
-                  <ChevronDown className="h-4 w-4 ml-1" />
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                {languages.map((lang) => (
-                  <DropdownMenuItem 
-                    key={lang.code}
-                    onClick={() => setLanguage(lang)}
-                    className={currentLanguage.code === lang.code ? "bg-muted" : ""}
-                  >
-                    {lang.name}
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <div className="flex items-center space-x-2">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="flex items-center">
+                    <Globe className="h-4 w-4 mr-1" />
+                    <span>{currentLanguage.code.toUpperCase()}</span>
+                    <ChevronDown className="h-4 w-4 ml-1" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem 
+                      key={lang.code}
+                      onClick={() => setLanguage(lang)}
+                      className={currentLanguage.code === lang.code ? "bg-muted" : ""}
+                    >
+                      {lang.name}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
 
-            <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
-              <Link to="/contact">{translate("Book Consultation")}</Link>
-            </Button>
+              <CurrencySelector variant="small" />
+
+              <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
+                <Link to="/contact">{translate("Book Consultation")}</Link>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -115,6 +122,10 @@ const Navbar = () => {
                   {translate(link.name)}
                 </Link>
               ))}
+              
+              <div className="py-2 border-t border-gray-100 flex space-x-2 items-center">
+                <CurrencySelector variant="small" />
+              </div>
               
               <div className="py-2 border-t border-gray-100">
                 <p className="text-sm text-luxury-charcoal/70 mb-2">Language</p>

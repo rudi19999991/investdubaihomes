@@ -8,8 +8,12 @@ import PropertyCard, { PropertyProps } from "@/components/PropertyCard";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
+import CurrencySelector from "@/components/CurrencySelector";
 
 const Index = () => {
+  const { translate } = useLanguage();
+  
   // Sample featured properties
   const featuredProperties: PropertyProps[] = [
     {
@@ -71,14 +75,17 @@ const Index = () => {
           <div className="luxury-container">
             <div className="flex justify-between items-center mb-8">
               <div>
-                <h2 className="text-3xl font-bold">Featured Properties</h2>
+                <h2 className="text-3xl font-bold">{translate("Featured Properties")}</h2>
                 <div className="gold-separator" />
               </div>
-              <Button asChild variant="ghost" className="hidden md:flex">
-                <Link to="/properties">
-                  View All Properties <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+              <div className="flex items-center gap-4">
+                <CurrencySelector />
+                <Button asChild variant="ghost" className="hidden md:flex">
+                  <Link to="/properties">
+                    {translate("View All Properties")} <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -90,7 +97,7 @@ const Index = () => {
             <div className="text-center mt-12">
               <Button asChild size="lg" className="bg-luxury-navy hover:bg-luxury-navy/90">
                 <Link to="/properties">
-                  Explore All Properties <ChevronRight className="ml-2 h-5 w-5" />
+                  {translate("Explore All Properties")} <ChevronRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -102,54 +109,61 @@ const Index = () => {
           <div className="luxury-container">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Investment Benefits
+                {translate("Investment Benefits")}
               </h2>
               <div className="gold-separator mx-auto" />
               <p className="text-gray-300 max-w-3xl mx-auto">
-                Dubai and Ras Al Khaimah offer exceptional advantages for property investors looking for strong returns and capital growth.
+                {translate("Dubai and Ras Al Khaimah offer exceptional advantages for property investors looking for strong returns and capital growth.")}
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">Tax-Free Investment</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("Tax-Free Investment")}</h3>
                 <p className="text-gray-300">
-                  Enjoy 0% income tax, 0% capital gains tax, and 0% property tax on your UAE investments.
+                  {translate("Enjoy 0% income tax, 0% capital gains tax, and 0% property tax on your UAE investments.")}
                 </p>
               </div>
               
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">High Rental Yields</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("High Rental Yields")}</h3>
                 <p className="text-gray-300">
-                  Dubai properties offer rental yields between 6-10%, significantly higher than global averages.
+                  {translate("Dubai properties offer rental yields between 6-10%, significantly higher than global averages.")}
                 </p>
               </div>
               
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">Residency Visas</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("Residency Visas")}</h3>
                 <p className="text-gray-300">
-                  Property investment can qualify you for UAE residence visas, offering global mobility.
+                  {translate("Property investment can qualify you for UAE residence visas, offering global mobility.")}
                 </p>
               </div>
               
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">Secure Investment</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("Secure Investment")}</h3>
                 <p className="text-gray-300">
-                  UAE's stable political environment and strong regulatory framework protect investor interests.
+                  {translate("UAE's stable political environment and strong regulatory framework protect investor interests.")}
                 </p>
               </div>
               
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">Crypto-Friendly</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("Crypto-Friendly")}</h3>
                 <p className="text-gray-300">
-                  Purchase properties using cryptocurrencies like Bitcoin and Ethereum with ease.
+                  {translate("Purchase properties using cryptocurrencies like Bitcoin and Ethereum with ease.")}
                 </p>
+                <div className="mt-4">
+                  <Button variant="link" className="text-luxury-gold p-0 h-auto" asChild>
+                    <Link to="/crypto-buying">
+                      {translate("Learn about crypto property buying")} <ChevronRight className="h-4 w-4 ml-1" />
+                    </Link>
+                  </Button>
+                </div>
               </div>
               
               <div className="bg-luxury-navy/40 backdrop-blur-sm p-8 rounded-lg border border-white/10">
-                <h3 className="text-xl font-bold mb-4 text-luxury-gold">Strong Appreciation</h3>
+                <h3 className="text-xl font-bold mb-4 text-luxury-gold">{translate("Strong Appreciation")}</h3>
                 <p className="text-gray-300">
-                  Dubai's property market consistently shows strong capital appreciation over time.
+                  {translate("Dubai's property market consistently shows strong capital appreciation over time.")}
                 </p>
               </div>
             </div>
@@ -157,7 +171,7 @@ const Index = () => {
             <div className="text-center mt-12">
               <Button asChild size="lg" className="bg-luxury-gold hover:bg-luxury-gold/90">
                 <Link to="/roi">
-                  Learn More About ROI <ChevronRight className="ml-2 h-5 w-5" />
+                  {translate("Learn More About ROI")} <ChevronRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
@@ -178,17 +192,17 @@ const Index = () => {
           <div className="luxury-container relative z-10">
             <div className="text-center max-w-3xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Ready to Start Your Investment Journey?
+                {translate("Ready to Start Your Investment Journey?")}
               </h2>
               <p className="text-xl mb-8">
-                Contact our experts for a personalized consultation on Dubai and RAK property investments.
+                {translate("Contact our experts for a personalized consultation on Dubai and RAK property investments.")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-luxury-gold hover:bg-luxury-gold/90">
-                  <Link to="/contact">Book a Consultation</Link>
+                  <Link to="/contact">{translate("Book a Consultation")}</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
-                  <Link to="/properties">Browse Properties</Link>
+                  <Link to="/properties">{translate("Browse Properties")}</Link>
                 </Button>
               </div>
             </div>

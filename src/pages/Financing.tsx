@@ -9,10 +9,13 @@ import { CircleDollarSign, FileSearch, Scale, Handshake, Calculator, PieChart, H
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useCurrency } from "@/contexts/CurrencyContext";
+import BankLogo from "@/components/BankLogo";
 
 const Financing = () => {
   const { toast } = useToast();
   const { translate } = useLanguage();
+  const { formatPrice, convertPrice } = useCurrency();
   const [propertyPrice, setPropertyPrice] = useState<number>(1500000);
   const [downPayment, setDownPayment] = useState<number>(25);
   const [interestRate, setInterestRate] = useState<number>(4.5);
@@ -38,9 +41,26 @@ const Financing = () => {
     
     toast({
       title: translate("Mortgage Calculation Complete"),
-      description: `${translate("Your estimated monthly payment is AED")} ${monthlyPaymentValue.toLocaleString('en-US', { maximumFractionDigits: 0 })}`,
+      description: `${translate("Your estimated monthly payment is")} ${formatPrice(monthlyPaymentValue)}`,
     });
   };
+
+  // Lists of banks for resident and non-resident sections
+  const residentBanks = [
+    "Emirates NBD",
+    "ADCB",
+    "DIB",
+    "Mashreq Bank",
+    "RAKBANK",
+    "HSBC"
+  ];
+  
+  const nonResidentBanks = [
+    "Emirates NBD",
+    "ENBD - Islamic Banking",
+    "Mashreq Bank",
+    "ADCB"
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -49,7 +69,7 @@ const Financing = () => {
       <main className="flex-grow pt-20">
         <HeroSection
           title={translate("Property Financing Options")}
-          subtitle={translate("Explore mortgage and financing")}
+          subtitle={translate("Explore mortgage and financing options for your Dubai investment")}
           videoUrl="https://player.vimeo.com/external/371865381.sd.mp4?s=5229ddd1a93a2daeb3e1acc49187664b43d0bfd3&profile_id=139&oauth2_token_id=57447761"
           backgroundImage="https://images.unsplash.com/photo-1604756228445-7419dbd85e7e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
           showCta={false}
@@ -63,7 +83,7 @@ const Financing = () => {
                 <h2 className="text-3xl font-bold mb-4">{translate("Financing Your Dubai Property")}</h2>
                 <div className="gold-separator" />
                 <p className="text-gray-600 mb-6">
-                  {translate("Navigating the financing options")}
+                  {translate("Navigating the financing options for your Dubai property investment is a crucial step in your investment journey. Below are the available options for both UAE residents and international investors.")}
                 </p>
 
                 <Tabs defaultValue="resident" className="mt-8 mb-8">
@@ -105,53 +125,17 @@ const Financing = () => {
                     <div className="bg-gray-50 p-6 rounded-lg mt-6">
                       <h3 className="text-xl font-semibold mb-4">{translate("Local Banks Offering Resident Mortgages")}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">Emirates NBD</h4>
+                        {residentBanks.map((bank) => (
+                          <div key={bank} className="bg-white p-4 rounded-md shadow-sm">
+                            <div className="flex items-center mb-3">
+                              <BankLogo bank={bank} className="mr-3" />
+                              <h4 className="font-medium">{bank}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600">
+                              {translate(`${bank} offers competitive mortgage rates for UAE residents with flexible terms and conditions.`)}
+                            </p>
                           </div>
-                          <p className="text-sm text-gray-600">{translate("Offers both conventional and Islamic financing options, with competitive rates for UAE nationals and residents.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">ADCB</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Flexible mortgage options with attractive interest rates and special benefits for premium customers.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">DIB</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Islamic home finance with Shariah-compliant options and competitive profit rates.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">Mashreq Bank</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Fast approval process and special rates for premium properties.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">RAKBANK</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Competitive rates with options for both ready and off-plan properties.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">HSBC</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("International bank offering mortgages with global account benefits.")}</p>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </TabsContent>
@@ -190,37 +174,17 @@ const Financing = () => {
                     <div className="bg-gray-50 p-6 rounded-lg mt-6">
                       <h3 className="text-xl font-semibold mb-4">{translate("Banks Offering Non-Resident Mortgages")}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">Emirates NBD</h4>
+                        {nonResidentBanks.map((bank) => (
+                          <div key={bank} className="bg-white p-4 rounded-md shadow-sm">
+                            <div className="flex items-center mb-3">
+                              <BankLogo bank={bank} className="mr-3" />
+                              <h4 className="font-medium">{bank}</h4>
+                            </div>
+                            <p className="text-sm text-gray-600">
+                              {translate(`${bank} provides specialized mortgage solutions for international investors.`)}
+                            </p>
                           </div>
-                          <p className="text-sm text-gray-600">{translate("Non-resident mortgage program with up to 65% financing.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">ENBD - Islamic Banking</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Shariah-compliant home finance options for non-residents.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">Mashreq Bank</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("International mortgage program with digital application process.")}</p>
-                        </div>
-                        
-                        <div className="bg-white p-4 rounded-md shadow-sm">
-                          <div className="flex items-center mb-2">
-                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
-                            <h4 className="font-medium">ADCB</h4>
-                          </div>
-                          <p className="text-sm text-gray-600">{translate("Non-resident mortgage with doorstep service in select countries.")}</p>
-                        </div>
+                        ))}
                       </div>
                       
                       <div className="mt-6 bg-luxury-navy/10 p-4 rounded">
@@ -353,12 +317,12 @@ const Financing = () => {
                     <div className="mt-4 p-4 bg-gray-100 rounded-md">
                       <h3 className="text-lg font-medium mb-2">{translate("Estimated Monthly Payment")}</h3>
                       <p className="text-2xl font-bold text-luxury-gold">
-                        AED {monthlyPayment.toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                        {formatPrice(monthlyPayment)}
                       </p>
                       <div className="mt-2 space-y-1 text-sm text-gray-600">
-                        <p>{translate("Total Loan Amount")}: AED {(propertyPrice * (1 - downPayment / 100)).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
-                        <p>{translate("Total Interest")}: AED {((monthlyPayment * loanTerm * 12) - (propertyPrice * (1 - downPayment / 100))).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
-                        <p>{translate("Total Payment")}: AED {(monthlyPayment * loanTerm * 12).toLocaleString('en-US', { maximumFractionDigits: 0 })}</p>
+                        <p>{translate("Total Loan Amount")}: {formatPrice(propertyPrice * (1 - downPayment / 100))}</p>
+                        <p>{translate("Total Interest")}: {formatPrice((monthlyPayment * loanTerm * 12) - (propertyPrice * (1 - downPayment / 100)))}</p>
+                        <p>{translate("Total Payment")}: {formatPrice(monthlyPayment * loanTerm * 12)}</p>
                       </div>
                     </div>
                   )}
