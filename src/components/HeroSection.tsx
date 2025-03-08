@@ -24,7 +24,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
   
   return (
     <div
-      className="relative h-screen min-h-[600px] flex items-center justify-center"
+      className="relative h-[70vh] min-h-[500px] flex items-center justify-center"
     >
       <div className="absolute inset-0 overflow-hidden">
         <video 
@@ -50,11 +50,11 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       </div>
 
       <div className="relative z-10 text-white text-center px-4 max-w-4xl mx-auto">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 animate-fade-in">
           {title}
         </h1>
         <div className="gold-separator mx-auto" />
-        <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto animate-slide-up">
+        <p className="text-lg md:text-xl mb-6 max-w-3xl mx-auto animate-slide-up">
           {subtitle}
         </p>
         {showCta && (

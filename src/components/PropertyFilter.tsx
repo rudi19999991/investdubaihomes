@@ -80,7 +80,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
               step={100000}
               value={[filters.priceRange[0], filters.priceRange[1]]}
               onValueChange={handlePriceChange}
-              className="my-4"
+              className="my-4 [&>.bg-primary]:bg-luxury-gold"
             />
           </div>
 
@@ -188,7 +188,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
               step={0.5}
               value={[filters.minRoi]}
               onValueChange={handleRoiChange}
-              className="my-4"
+              className="my-4 [&>.bg-primary]:bg-luxury-gold"
             />
           </div>
         </div>

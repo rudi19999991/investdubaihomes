@@ -11,6 +11,7 @@ import ROI from "./pages/ROI";
 import CompanySetup from "./pages/CompanySetup";
 import Contact from "./pages/Contact";
 import Financing from "./pages/Financing";
+import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/company-setup" element={<CompanySetup />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/financing" element={<Financing />} />
+            <Route path="/blog" element={<Blog />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
