@@ -27,7 +27,7 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   const { translate } = useLanguage();
-  const { formatPrice } = useCurrency();
+  const { formatPrice, currentCurrency } = useCurrency();
   
   return (
     <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -62,6 +62,9 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center text-luxury-gold">
             <span className="text-xl font-bold">{formatPrice(property.price)}</span>
+            <span className="text-xs ml-1 text-gray-500">
+              {currentCurrency.code !== "AED" && `(${currentCurrency.code})`}
+            </span>
           </div>
           <div className="flex items-center text-green-600">
             <PercentCircle size={18} className="mr-1" />

@@ -7,6 +7,8 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import MortgageCalculator from "@/components/financing/MortgageCalculator";
 import FinancingTabs from "@/components/financing/FinancingTabs";
 import AdditionalFinancing from "@/components/financing/AdditionalFinancing";
+import PartnersSection from "@/components/partners/PartnersSection";
+import CurrencySelector from "@/components/CurrencySelector";
 
 const Financing = () => {
   const { translate } = useLanguage();
@@ -24,26 +26,36 @@ const Financing = () => {
           showCta={false}
         />
         
-        <section className="section-padding">
+        <section className="section-padding bg-gradient-to-b from-white to-gray-50">
           <div className="luxury-container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              {/* Financing Information */}
+            <div className="mb-10 flex flex-col md:flex-row justify-between items-start md:items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-4">{translate("Financing Your Dubai Property")}</h2>
+                <h2 className="text-3xl font-bold mb-3">{translate("Financing Your Dubai Property")}</h2>
                 <div className="gold-separator" />
-                <p className="text-gray-600 mb-6">
-                  {translate("Navigating the financing options for your Dubai property investment is a crucial step in your investment journey. Below are the available options for both UAE residents and international investors.")}
-                </p>
+              </div>
+              <CurrencySelector variant="default" alignment="end" />
+            </div>
+            
+            <p className="text-gray-600 mb-10 max-w-3xl">
+              {translate("Navigating the financing options for your Dubai property investment is a crucial step in your investment journey. Below are the available options for both UAE residents and international investors.")}
+            </p>
 
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+              {/* Financing Information */}
+              <div className="space-y-8">
                 <FinancingTabs />
                 <AdditionalFinancing />
               </div>
               
               {/* Mortgage Calculator */}
-              <MortgageCalculator />
+              <div className="lg:sticky lg:top-24">
+                <MortgageCalculator />
+              </div>
             </div>
           </div>
         </section>
+        
+        <PartnersSection />
       </main>
       
       <Footer />
