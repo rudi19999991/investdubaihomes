@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import PropertyFilter from "@/components/PropertyFilter";
 import PropertyCard, { PropertyProps } from "@/components/PropertyCard";
 import { useLanguage } from "@/contexts/LanguageContext";
+import CurrencySelector from "@/components/CurrencySelector";
 
 const Properties = () => {
   const { translate } = useLanguage();
@@ -168,9 +169,12 @@ const Properties = () => {
             <PropertyFilter onFilter={handleFilter} />
             
             <div className="mt-12">
-              <h2 className="text-2xl font-bold mb-6">
-                {filteredProperties.length} {translate("Properties Found")}
-              </h2>
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-bold">
+                  {filteredProperties.length} {translate("Properties Found")}
+                </h2>
+                <CurrencySelector />
+              </div>
               
               {filteredProperties.length > 0 ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

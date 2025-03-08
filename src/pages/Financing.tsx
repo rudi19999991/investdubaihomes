@@ -5,9 +5,10 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { CircleDollarSign, FileSearch, Scale, Handshake, Calculator } from "lucide-react";
+import { CircleDollarSign, FileSearch, Scale, Handshake, Calculator, PieChart, Home, Building2, Landmark } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Financing = () => {
   const { toast } = useToast();
@@ -64,52 +65,207 @@ const Financing = () => {
                 <p className="text-gray-600 mb-6">
                   {translate("Navigating the financing options")}
                 </p>
+
+                <Tabs defaultValue="resident" className="mt-8 mb-8">
+                  <TabsList className="grid grid-cols-2 mb-6">
+                    <TabsTrigger value="resident">{translate("UAE Residents")}</TabsTrigger>
+                    <TabsTrigger value="non-resident">{translate("Non-Residents")}</TabsTrigger>
+                  </TabsList>
+                  
+                  <TabsContent value="resident" className="space-y-6">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold">
+                        {translate("Mortgage Options for UAE Residents")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {translate("As a UAE resident, you have access to a wide range of mortgage products from local and international banks.")}
+                      </p>
+                      
+                      <div className="grid gap-6 mt-6">
+                        <div className="rounded-lg border p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="bg-luxury-navy/10 p-2 rounded-full">
+                              <Home className="h-5 w-5 text-luxury-navy" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold">{translate("For Residents")}</h4>
+                            </div>
+                          </div>
+                          <ul className="mt-3 space-y-2 pl-10 list-disc text-gray-600">
+                            <li>{translate("Up to 80% LTV for properties under AED 5 million")}</li>
+                            <li>{translate("Up to 75% LTV for properties over AED 5 million")}</li>
+                            <li>{translate("Interest rates starting from 3.99% (variable) and 4.49% (fixed)")}</li>
+                            <li>{translate("Loan terms up to 25 years")}</li>
+                            <li>{translate("Minimum salary requirement: AED 15,000/month")}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold mb-4">{translate("Local Banks Offering Resident Mortgages")}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">Emirates NBD</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Offers both conventional and Islamic financing options, with competitive rates for UAE nationals and residents.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">ADCB</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Flexible mortgage options with attractive interest rates and special benefits for premium customers.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">DIB</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Islamic home finance with Shariah-compliant options and competitive profit rates.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">Mashreq Bank</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Fast approval process and special rates for premium properties.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">RAKBANK</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Competitive rates with options for both ready and off-plan properties.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">HSBC</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("International bank offering mortgages with global account benefits.")}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="non-resident" className="space-y-6">
+                    <div className="space-y-4">
+                      <h3 className="text-xl font-semibold">
+                        {translate("Mortgage Options for Non-Residents")}
+                      </h3>
+                      <p className="text-gray-600">
+                        {translate("International investors can secure financing for Dubai property purchases, though terms differ from resident options.")}
+                      </p>
+                      
+                      <div className="grid gap-6 mt-6">
+                        <div className="rounded-lg border p-4">
+                          <div className="flex items-center gap-3">
+                            <div className="bg-luxury-navy/10 p-2 rounded-full">
+                              <Building2 className="h-5 w-5 text-luxury-navy" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold">{translate("For Non-Residents")}</h4>
+                            </div>
+                          </div>
+                          <ul className="mt-3 space-y-2 pl-10 list-disc text-gray-600">
+                            <li>{translate("Up to 65-70% LTV for completed properties")}</li>
+                            <li>{translate("Limited financing options for off-plan properties")}</li>
+                            <li>{translate("Interest rates typically starting from 4.99% (variable) and 5.49% (fixed)")}</li>
+                            <li>{translate("Loan terms up to 20 years")}</li>
+                            <li>{translate("More extensive documentation requirements")}</li>
+                            <li>{translate("Minimum income typically USD 8,000/month or equivalent")}</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="bg-gray-50 p-6 rounded-lg mt-6">
+                      <h3 className="text-xl font-semibold mb-4">{translate("Banks Offering Non-Resident Mortgages")}</h3>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">Emirates NBD</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Non-resident mortgage program with up to 65% financing.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">ENBD - Islamic Banking</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Shariah-compliant home finance options for non-residents.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">Mashreq Bank</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("International mortgage program with digital application process.")}</p>
+                        </div>
+                        
+                        <div className="bg-white p-4 rounded-md shadow-sm">
+                          <div className="flex items-center mb-2">
+                            <Landmark className="h-5 w-5 mr-2 text-luxury-navy" />
+                            <h4 className="font-medium">ADCB</h4>
+                          </div>
+                          <p className="text-sm text-gray-600">{translate("Non-resident mortgage with doorstep service in select countries.")}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="mt-6 bg-luxury-navy/10 p-4 rounded">
+                        <h4 className="font-semibold mb-2">{translate("Documentation Required for Non-Residents")}</h4>
+                        <ul className="space-y-1 pl-6 list-disc text-gray-600 text-sm">
+                          <li>{translate("Passport copies and residence proof in home country")}</li>
+                          <li>{translate("6 months' bank statements")}</li>
+                          <li>{translate("Proof of income/employment (min. 2 years in current job)")}</li>
+                          <li>{translate("Credit report from home country (if available)")}</li>
+                          <li>{translate("Property details and sale agreement")}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </Tabs>
                 
-                <div className="space-y-6">
+                <div className="space-y-6 mt-8">
+                  <div className="flex items-start">
+                    <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
+                      <PieChart className="h-6 w-6 text-luxury-navy" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Islamic Banking Options")}</h3>
+                      <p className="text-gray-600">
+                        {translate("Dubai offers extensive Shariah-compliant financing options through Islamic banks and Islamic windows of conventional banks.")}
+                      </p>
+                      <div className="mt-2">
+                        <h4 className="font-medium">{translate("Popular Islamic Home Finance Products:")}</h4>
+                        <ul className="list-disc pl-6 mt-2 text-gray-600">
+                          <li>{translate("Ijara (lease-to-own structure)")}</li>
+                          <li>{translate("Murabaha (cost-plus financing)")}</li>
+                          <li>{translate("Diminishing Musharaka (declining balance partnership)")}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  
                   <div className="flex items-start">
                     <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
                       <CircleDollarSign className="h-6 w-6 text-luxury-navy" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-2">{translate("Mortgage Options")}</h3>
+                      <h3 className="text-xl font-semibold mb-2">{translate("Developer Payment Plans")}</h3>
                       <p className="text-gray-600">
-                        {translate("Explore a range of mortgage")}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
-                      <FileSearch className="h-6 w-6 text-luxury-navy" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{translate("Eligibility Criteria")}</h3>
-                      <p className="text-gray-600">
-                        {translate("Understand the key criteria")}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
-                      <Scale className="h-6 w-6 text-luxury-navy" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{translate("Loan-to-Value (LTV)")}</h3>
-                      <p className="text-gray-600">
-                        {translate("Learn about typical LTV")}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start">
-                    <div className="bg-luxury-navy/10 p-3 rounded-full mr-4">
-                      <Handshake className="h-6 w-6 text-luxury-navy" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-2">{translate("Our Financing Partners")}</h3>
-                      <p className="text-gray-600">
-                        {translate("We work with leading banks")}
+                        {translate("Many developers offer attractive payment plans for off-plan properties, with some extending post-handover payment options of 3-5 years, reducing the need for bank financing.")}
                       </p>
                     </div>
                   </div>

@@ -1,25 +1,24 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Building, Bed, Bath, Home, ArrowRight } from "lucide-react";
+import { Building, MapPin, BedSingle, Bath, Ruler, PercentCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCurrency } from "@/contexts/CurrencyContext";
 
 export interface PropertyProps {
   id: string;
   title: string;
   location: string;
   price: number;
-  currency?: string;
   type: string;
   bedrooms: number;
   bathrooms: number;
   area: number;
   roi: number;
   imageUrl: string;
-  status: "ready" | "offplan";
+  status: 'ready' | 'offplan';
 }
 
 interface PropertyCardProps {
@@ -28,85 +27,74 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   const { translate } = useLanguage();
-  const {
-    id,
-    title,
-    location,
-    price,
-    currency = "AED",
-    type,
-    bedrooms,
-    bathrooms,
-    area,
-    roi,
-    imageUrl,
-    status,
-  } = property;
-
-  const formattedPrice = new Intl.NumberFormat("en-US").format(price);
-
+  const { formatPrice } = useCurrency();
+  
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
-      <div className="relative">
-        <Link to={`/properties/${id}`}>
-          <img
-            src={imageUrl}
-            alt={title}
-            className="h-64 w-full object-cover"
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <Link to={`/properties/${property.id}`} className="block relative">
+        <div className="relative h-56 overflow-hidden">
+          <img 
+            src={property.imageUrl} 
+            alt={property.title} 
+            className="object-cover w-full h-full transition-transform duration-500 hover:scale-105"
           />
-          <Badge 
-            className={`absolute top-4 left-4 ${
-              status === "ready" ? "bg-green-600" : "bg-luxury-gold"
-            }`}
-          >
-            {status === "ready" ? translate("Ready to Move") : translate("Off-Plan")}
+          <Badge className={`absolute top-3 right-3 capitalize ${
+            property.status === 'ready' ? 'bg-green-500' : 'bg-blue-500'
+          }`}>
+            {translate(property.status === 'ready' ? 'Ready' : 'Off-Plan')}
           </Badge>
-          <div className="absolute bottom-4 right-4 bg-luxury-navy text-white px-3 py-1 rounded-full text-sm font-medium">
-            {roi}% {translate("ROI")}
-          </div>
-        </Link>
-      </div>
-
-      <CardContent className="pt-6">
-        <div className="flex items-center text-sm text-muted-foreground mb-2">
-          <MapPin className="h-4 w-4 mr-1" />
-          <span>{location}</span>
         </div>
-        <Link to={`/properties/${id}`}>
-          <h3 className="text-xl font-semibold mb-2 line-clamp-1 hover:text-luxury-gold transition-colors">{title}</h3>
-        </Link>
-        <p className="text-luxury-gold font-bold text-lg mb-4">
-          {currency} {formattedPrice}
-        </p>
-
-        <div className="grid grid-cols-3 gap-2 text-sm">
-          <div className="flex items-center">
-            <Bed className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{bedrooms} {translate("Beds")}</span>
+      </Link>
+      
+      <div className="p-5">
+        <div className="mb-3">
+          <div className="flex items-center text-sm text-gray-500 mb-1">
+            <MapPin size={14} className="mr-1" />
+            {property.location}
           </div>
-          <div className="flex items-center">
-            <Bath className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{bathrooms} {translate("Baths")}</span>
+          <Link to={`/properties/${property.id}`} className="block">
+            <h3 className="text-lg font-bold text-luxury-navy hover:text-luxury-gold transition-colors">
+              {property.title}
+            </h3>
+          </Link>
+        </div>
+        
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center text-luxury-gold">
+            <span className="text-xl font-bold">{formatPrice(property.price)}</span>
           </div>
-          <div className="flex items-center">
-            <Home className="h-4 w-4 mr-1 text-luxury-navy" />
-            <span>{area} {translate("sqft")}</span>
+          <div className="flex items-center text-green-600">
+            <PercentCircle size={18} className="mr-1" />
+            <span className="font-medium">ROI: {property.roi}%</span>
           </div>
         </div>
-      </CardContent>
-
-      <CardFooter className="pt-0">
-        <Button 
-          asChild 
-          className="w-full bg-luxury-navy hover:bg-luxury-navy/90"
-        >
-          <Link to={`/properties/${id}`}>
+        
+        <div className="grid grid-cols-4 gap-2 mb-4">
+          <div className="flex flex-col items-center text-sm text-gray-700">
+            <Building size={16} className="mb-1 text-luxury-navy" />
+            <span>{property.type}</span>
+          </div>
+          <div className="flex flex-col items-center text-sm text-gray-700">
+            <BedSingle size={16} className="mb-1 text-luxury-navy" />
+            <span>{property.bedrooms}</span>
+          </div>
+          <div className="flex flex-col items-center text-sm text-gray-700">
+            <Bath size={16} className="mb-1 text-luxury-navy" />
+            <span>{property.bathrooms}</span>
+          </div>
+          <div className="flex flex-col items-center text-sm text-gray-700">
+            <Ruler size={16} className="mb-1 text-luxury-navy" />
+            <span>{property.area} m²</span>
+          </div>
+        </div>
+        
+        <Button className="w-full bg-luxury-navy hover:bg-luxury-navy/90" asChild>
+          <Link to={`/properties/${property.id}`}>
             {translate("View Details")}
-            <ArrowRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

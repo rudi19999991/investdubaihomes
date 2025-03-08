@@ -1,7 +1,6 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Select,
@@ -13,6 +12,8 @@ import {
 import { Slider } from "@/components/ui/slider";
 import { Search, Building, MapPin, DollarSign, Percent } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import CurrencySelector from "./CurrencySelector";
+import { useCurrency } from "@/contexts/CurrencyContext";
 
 interface FilterProps {
   onFilter: (filters: FilterOptions) => void;
@@ -29,6 +30,8 @@ interface FilterOptions {
 
 const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
   const { translate } = useLanguage();
+  const { currentCurrency, convertPrice } = useCurrency();
+  
   const [filters, setFilters] = useState<FilterOptions>({
     priceRange: [500000, 10000000],
     location: "",
@@ -52,14 +55,26 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
   };
 
   const formatPrice = (value: number) => {
-    return `AED ${(value / 1000000).toFixed(1)}M`;
+    if (currentCurrency.code === 'AED') {
+      return `AED ${(value / 1000000).toFixed(1)}M`;
+    }
+    const converted = convertPrice(value);
+    
+    if (currentCurrency.code === 'BTC' || currentCurrency.code === 'ETH') {
+      return `${currentCurrency.symbol} ${converted.toFixed(currentCurrency.decimals)}`;
+    }
+    
+    return `${currentCurrency.symbol} ${(converted / 1000000).toFixed(1)}M`;
   };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
-      <h3 className="text-xl font-semibold mb-6 flex items-center">
-        <Search className="mr-2 h-5 w-5 text-luxury-gold" /> {translate("Find Your Ideal Investment")}
-      </h3>
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="text-xl font-semibold flex items-center">
+          <Search className="mr-2 h-5 w-5 text-luxury-gold" /> {translate("Find Your Ideal Investment")}
+        </h3>
+        <CurrencySelector variant="small" />
+      </div>
       
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -80,7 +95,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
               step={100000}
               value={[filters.priceRange[0], filters.priceRange[1]]}
               onValueChange={handlePriceChange}
-              className="my-4 [&>.bg-primary]:bg-luxury-gold"
+              className="my-4"
             />
           </div>
 
@@ -188,7 +203,7 @@ const PropertyFilter: React.FC<FilterProps> = ({ onFilter }) => {
               step={0.5}
               value={[filters.minRoi]}
               onValueChange={handleRoiChange}
-              className="my-4 [&>.bg-primary]:bg-luxury-gold"
+              className="my-4"
             />
           </div>
         </div>
