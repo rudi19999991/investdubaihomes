@@ -1,7 +1,8 @@
 
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
 
 interface LocationCardProps {
@@ -13,6 +14,7 @@ interface LocationCardProps {
   averagePrice: string;
   rentalYield: string;
   established: string;
+  onViewDevelopments?: () => void;
 }
 
 const LocationCard: React.FC<LocationCardProps> = ({
@@ -24,6 +26,7 @@ const LocationCard: React.FC<LocationCardProps> = ({
   averagePrice,
   rentalYield,
   established,
+  onViewDevelopments,
 }) => {
   const { translate } = useLanguage();
 
@@ -69,6 +72,16 @@ const LocationCard: React.FC<LocationCardProps> = ({
           </div>
         </div>
       </CardContent>
+      {onViewDevelopments && (
+        <CardFooter>
+          <Button 
+            onClick={onViewDevelopments} 
+            className="w-full bg-luxury-gold hover:bg-amber-600 text-white"
+          >
+            {translate("View Developments")}
+          </Button>
+        </CardFooter>
+      )}
     </Card>
   );
 };

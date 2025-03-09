@@ -1,9 +1,16 @@
 
 import React from "react";
-import { Ship, MapPin, Building, Home } from "lucide-react";
+import { Ship, MapPin, Building, Home, Mountain } from "lucide-react";
 import LocationCard from "./LocationCard";
+import { useNavigate } from "react-router-dom";
 
 const RAKLocations = () => {
+  const navigate = useNavigate();
+
+  const handleViewDevelopments = (area: string) => {
+    navigate(`/uae-know-how/${area.toLowerCase().replace(/\s+/g, '-')}`);
+  };
+
   return (
     <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
@@ -16,6 +23,7 @@ const RAKLocations = () => {
           averagePrice="AED 800 - 1,400/sqft"
           rentalYield="8-10%"
           established="2007"
+          onViewDevelopments={() => handleViewDevelopments("Al Marjan Island")}
         />
         
         <LocationCard 
@@ -27,10 +35,11 @@ const RAKLocations = () => {
           averagePrice="AED 750 - 1,200/sqft"
           rentalYield="7-9%"
           established="2003"
+          onViewDevelopments={() => handleViewDevelopments("Al Hamra Village")}
         />
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <LocationCard 
           icon={Building}
           title="Mina Al Arab"
@@ -40,6 +49,7 @@ const RAKLocations = () => {
           averagePrice="AED 800 - 1,100/sqft"
           rentalYield="7-8%"
           established="2008"
+          onViewDevelopments={() => handleViewDevelopments("Mina Al Arab")}
         />
         
         <LocationCard 
@@ -51,6 +61,21 @@ const RAKLocations = () => {
           averagePrice="AED 650 - 950/sqft"
           rentalYield="8-10%"
           established="2012"
+          onViewDevelopments={() => handleViewDevelopments("Gateway Residences")}
+        />
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <LocationCard 
+          icon={Mountain}
+          title="Jebel Jais"
+          imageUrl="https://images.unsplash.com/photo-1518602164209-4e2c3dff3ada?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          description="Luxury mountain residences near the UAE's highest peak, offering breathtaking views, cooler temperatures, and adventure activities nearby."
+          propertyTypes="Villas, Chalets"
+          averagePrice="AED 900 - 1,500/sqft"
+          rentalYield="6-8%"
+          established="2018"
+          onViewDevelopments={() => handleViewDevelopments("Jebel Jais")}
         />
       </div>
     </div>

@@ -7,31 +7,56 @@ import { Building, Landmark, Scale, Briefcase } from "lucide-react";
 const PartnersSection = () => {
   const { translate } = useLanguage();
 
-  // Lists of partners by category
+  // Lists of partners by category with logos
   const developers = [
-    "Emaar Properties", "Dubai Holding", "Nakheel", "DAMAC Properties", 
-    "Meraas", "Sobha Realty", "Omniyat", "Azizi Developments", 
-    "Danube Properties", "Binghatti Developers", "RAK Properties", "Al Hamra"
+    { name: "Emaar Properties", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Emaar_Properties_logo.svg/1200px-Emaar_Properties_logo.svg.png" },
+    { name: "Dubai Holding", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Dubai_Holding_logo_vector.svg/2560px-Dubai_Holding_logo_vector.svg.png" },
+    { name: "Nakheel", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Nakheel_logo.svg/1200px-Nakheel_logo.svg.png" },
+    { name: "DAMAC Properties", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Damac_properties_logo.svg/1200px-Damac_properties_logo.svg.png" },
+    { name: "Meraas", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Meraas_Holding_logo.svg/1200px-Meraas_Holding_logo.svg.png" },
+    { name: "Sobha Realty", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Sobha_Limited_Logo.svg/1200px-Sobha_Limited_Logo.svg.png" },
+    { name: "Omniyat", logo: "https://www.omniyat.com/themes/custom/omniyat/logo.svg" },
+    { name: "Azizi Developments", logo: "https://www.azizidevelopments.com/assets/imgs/logo-black.png" },
+    { name: "Danube Properties", logo: "https://www.danubeproperties.ae/images/logo.png" },
+    { name: "Binghatti Developers", logo: "https://binghatti.com/wp-content/uploads/2022/04/Binghatti-Logo-Horizontal-Light.svg" },
+    { name: "RAK Properties", logo: "https://www.rakproperties.net/Themes/RAKGROUP/Content/img/logo.png" },
+    { name: "Al Hamra", logo: "https://alhamra.ae/wp-content/themes/alhamra/assets/images/logo.svg" }
   ];
 
   const banks = [
-    "Emirates NBD", "ADCB", "Dubai Islamic Bank", "Mashreq Bank", 
-    "RAKBANK", "HSBC UAE", "FAB", "Standard Chartered UAE", 
-    "Ajman Bank", "Commercial Bank of Dubai"
+    { name: "Emirates NBD", logo: "https://www.emiratesnbd.com/Style%20Library/EmiratesNBD/img/logo.png" },
+    { name: "ADCB", logo: "https://www.adcb.com/Style%20Library/images/logo.svg" },
+    { name: "Dubai Islamic Bank", logo: "https://www.dib.ae/images/dib-logo-eng.svg" },
+    { name: "Mashreq Bank", logo: "https://www.mashreqbank.com/sites/default/files/2022-03/Mashreq-Logo-Digital_1.svg" },
+    { name: "RAKBANK", logo: "https://rakbank.ae/wps/wcm/connect/rakbank_contentsource/Website-Template/Home/RAKBANK-LOGO.svg" },
+    { name: "HSBC UAE", logo: "https://www.hsbc.ae/-/media/hsbc/hsbc-ae/brand/logo-hsbc-white-transparent.svg" },
+    { name: "FAB", logo: "https://www.bankfab.com/-/media/fabgroup/images/homepage/fab-logo.svg" },
+    { name: "Standard Chartered UAE", logo: "https://av.sc.com/ae/content/images/uae-sc-logo-white.png" },
+    { name: "Ajman Bank", logo: "https://www.ajmanbank.ae/-/media/Project/AjmanBank/Images/svg/ajman-bank-logo-with-slogan-eng.svg" },
+    { name: "Commercial Bank of Dubai", logo: "https://www.cbd.ae/Style%20Library/images/logo.svg" }
   ];
 
   const lawFirms = [
-    "Al Tamimi & Company", "Baker McKenzie", "Clyde & Co", 
-    "Hadef & Partners", "BSA Ahmad Bin Hezeem & Associates", 
-    "Galadari Advocates & Legal Consultants", "Global Advocates", 
-    "James Berry & Associates"
+    { name: "Al Tamimi & Company", logo: "https://www.tamimi.com/wp-content/themes/tamimi/assets/images/logo.svg" },
+    { name: "Baker McKenzie", logo: "https://www.bakermckenzie.com/-/media/images/bm-logo.png" },
+    { name: "Clyde & Co", logo: "https://www.clydeco.com/themes/custom/clyde_theme/logo.svg" },
+    { name: "Hadef & Partners", logo: "https://www.hadefpartners.com/logo-light.svg" },
+    { name: "BSA Ahmad Bin Hezeem & Associates", logo: "https://bsabh.com/wp-content/themes/bsa/assets/img/logo.png" },
+    { name: "Galadari Advocates & Legal Consultants", logo: "https://galadarilaw.com/wp-content/themes/galadari/assets/images/logo-black.svg" },
+    { name: "Global Advocates", logo: "https://www.globaladvocates.com/assets/images/global-advocates-dubai-law-firm-logo.png" },
+    { name: "James Berry & Associates", logo: "https://www.jamesberrylaw.com/wp-content/uploads/2020/01/JB-Legal-logo-1-1.png" }
   ];
 
   const freeZones = [
-    "Dubai Multi Commodities Centre (DMCC)", "Dubai International Financial Centre (DIFC)", 
-    "Dubai Silicon Oasis", "Dubai Media City", "Jebel Ali Free Zone (JAFZA)",
-    "Dubai Airport Free Zone (DAFZA)", "Ras Al Khaimah Economic Zone (RAKEZ)", 
-    "Ajman Free Zone", "Sharjah Media City (SHAMS)"
+    { name: "Dubai Multi Commodities Centre (DMCC)", logo: "https://www.dmcc.ae/themes/custom/dmcc/images/logo.svg" },
+    { name: "Dubai International Financial Centre (DIFC)", logo: "https://www.difc.ae/images/logo.svg" },
+    { name: "Dubai Silicon Oasis", logo: "https://www.dsoa.ae/content/dam/dsoa/logo/logo-en.svg" },
+    { name: "Dubai Media City", logo: "https://www.dmc.ae/wp-content/themes/mediaCity/images/logo.svg" },
+    { name: "Jebel Ali Free Zone (JAFZA)", logo: "https://jafza.ae/wp-content/themes/jafza/assets/img/logo.svg" },
+    { name: "Dubai Airport Free Zone (DAFZA)", logo: "https://www.dafz.ae/en/PublishingImages/dafza-logo.svg" },
+    { name: "Ras Al Khaimah Economic Zone (RAKEZ)", logo: "https://www.rakez.com/resources/img/rakez-logo-white.svg" },
+    { name: "Ajman Free Zone", logo: "https://www.ajmanfreezone.gov.ae/content/dam/afz/portal/brand-footer/AJMAN%20FREE%20ZONE-F.svg" },
+    { name: "Sharjah Media City (SHAMS)", logo: "https://www.shams.ae/en/images/logo.svg" }
   ];
 
   return (
@@ -73,9 +98,15 @@ const PartnersSection = () => {
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {developers.map((developer, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                    <Building className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
-                    <div className="font-medium">{developer}</div>
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center h-32">
+                    <div className="h-16 flex items-center justify-center mb-2">
+                      <img 
+                        src={developer.logo} 
+                        alt={developer.name} 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center text-sm font-medium mt-auto">{developer.name}</div>
                   </div>
                 ))}
               </div>
@@ -90,9 +121,15 @@ const PartnersSection = () => {
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {banks.map((bank, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                    <Landmark className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
-                    <div className="font-medium">{bank}</div>
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center h-32">
+                    <div className="h-16 flex items-center justify-center mb-2">
+                      <img 
+                        src={bank.logo} 
+                        alt={bank.name} 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center text-sm font-medium mt-auto">{bank.name}</div>
                   </div>
                 ))}
               </div>
@@ -107,9 +144,15 @@ const PartnersSection = () => {
               </p>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {lawFirms.map((firm, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                    <Scale className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
-                    <div className="font-medium">{firm}</div>
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center h-32">
+                    <div className="h-16 flex items-center justify-center mb-2">
+                      <img 
+                        src={firm.logo} 
+                        alt={firm.name} 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center text-sm font-medium mt-auto">{firm.name}</div>
                   </div>
                 ))}
               </div>
@@ -124,9 +167,15 @@ const PartnersSection = () => {
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {freeZones.map((zone, index) => (
-                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                    <Briefcase className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
-                    <div className="font-medium">{zone}</div>
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg flex flex-col items-center justify-center h-32">
+                    <div className="h-16 flex items-center justify-center mb-2">
+                      <img 
+                        src={zone.logo} 
+                        alt={zone.name} 
+                        className="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                    <div className="text-center text-sm font-medium mt-auto">{zone.name}</div>
                   </div>
                 ))}
               </div>
