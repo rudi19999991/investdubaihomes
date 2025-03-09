@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, PalmTree as TreePalm, MapPin, Home, Landmark, Ship } from "lucide-react";
+import { Building, Palmtree, MapPin, Home, Landmark, Ship } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const UAEKnowHow = () => {
@@ -86,7 +86,7 @@ const UAEKnowHow = () => {
                   <Card>
                     <CardHeader className="bg-luxury-navy text-white rounded-t-lg">
                       <div className="flex items-center">
-                        <TreePalm className="h-6 w-6 mr-3" />
+                        <Palmtree className="h-6 w-6 mr-3" />
                         <CardTitle>{translate("Palm Jumeirah")}</CardTitle>
                       </div>
                     </CardHeader>
