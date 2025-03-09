@@ -15,6 +15,7 @@ import Blog from "./pages/Blog";
 import CryptoBuying from "./pages/CryptoBuying";
 import NotFound from "./pages/NotFound";
 import UAEKnowHow from "./pages/UAEKnowHow";
+import AboutUs from "./pages/AboutUs";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { CurrencyProvider } from "./contexts/CurrencyContext";
 import ScrollReset from "./components/ScrollReset";
@@ -41,6 +42,7 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/crypto-buying" element={<CryptoBuying />} />
               <Route path="/uae-know-how" element={<UAEKnowHow />} />
+              <Route path="/about-us" element={<AboutUs />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
