@@ -1,11 +1,10 @@
-
 import React from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, PalmTree, MapPin, Home, Landmark, Ship } from "lucide-react";
+import { Building, PalmTree as TreePalm, MapPin, Home, Landmark, Ship } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const UAEKnowHow = () => {
@@ -87,7 +86,7 @@ const UAEKnowHow = () => {
                   <Card>
                     <CardHeader className="bg-luxury-navy text-white rounded-t-lg">
                       <div className="flex items-center">
-                        <PalmTree className="h-6 w-6 mr-3" />
+                        <TreePalm className="h-6 w-6 mr-3" />
                         <CardTitle>{translate("Palm Jumeirah")}</CardTitle>
                       </div>
                     </CardHeader>
@@ -229,7 +228,7 @@ const UAEKnowHow = () => {
                     <CardContent className="pt-6">
                       <div className="aspect-video rounded-md overflow-hidden mb-4">
                         <img 
-                          src="https://images.unsplash.com/photo-1580223530027-c6a0d516ab1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" 
+                          src="https://images.unsplash.com/photo-1580223530027-c6a0d516b523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" 
                           alt="Al Marjan Island" 
                           className="w-full h-full object-cover"
                         />

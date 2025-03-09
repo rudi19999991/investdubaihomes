@@ -2,7 +2,7 @@
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, Bank, Scale, Briefcase } from "lucide-react";
+import { Building, Landmark, Scale, Briefcase } from "lucide-react";
 
 const PartnersSection = () => {
   const { translate } = useLanguage();
@@ -52,7 +52,7 @@ const PartnersSection = () => {
               <span>{translate("Developers")}</span>
             </TabsTrigger>
             <TabsTrigger value="banks" className="flex items-center gap-2">
-              <Bank className="h-4 w-4" />
+              <Landmark className="h-4 w-4" />
               <span>{translate("Banks")}</span>
             </TabsTrigger>
             <TabsTrigger value="law-firms" className="flex items-center gap-2">
@@ -91,7 +91,7 @@ const PartnersSection = () => {
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {banks.map((bank, index) => (
                   <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
-                    <Bank className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
+                    <Landmark className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
                     <div className="font-medium">{bank}</div>
                   </div>
                 ))}
