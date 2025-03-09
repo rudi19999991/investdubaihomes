@@ -2,105 +2,135 @@
 import React from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Building, GraduationCap, Globe, Building2 } from "lucide-react";
-
-interface PartnerType {
-  name: string;
-  description: string;
-  logoUrl?: string;
-}
+import { Building, Bank, Scale, Briefcase } from "lucide-react";
 
 const PartnersSection = () => {
   const { translate } = useLanguage();
 
-  const developers: PartnerType[] = [
-    { name: "Emaar Properties", description: translate("Leading developer of iconic projects including Burj Khalifa") },
-    { name: "DAMAC Properties", description: translate("Luxury real estate developer with projects across Dubai") },
-    { name: "Nakheel", description: translate("Developer of Palm Jumeirah and other waterfront projects") },
-    { name: "Meraas", description: translate("Developer focused on creating unique lifestyle experiences") },
-    { name: "Dubai Properties", description: translate("Major developer of residential and commercial real estate") },
-    { name: "Sobha Group", description: translate("Developer of premium residential properties") }
+  // Lists of partners by category
+  const developers = [
+    "Emaar Properties", "Dubai Holding", "Nakheel", "DAMAC Properties", 
+    "Meraas", "Sobha Realty", "Omniyat", "Azizi Developments", 
+    "Danube Properties", "Binghatti Developers", "RAK Properties", "Al Hamra"
   ];
 
-  const banks: PartnerType[] = [
-    { name: "Emirates NBD", description: translate("Leading banking group offering comprehensive financial services") },
-    { name: "ADCB", description: translate("Abu Dhabi Commercial Bank with specialized property financing") },
-    { name: "Dubai Islamic Bank", description: translate("Premier Islamic financial institution with Sharia-compliant options") },
-    { name: "Mashreq Bank", description: translate("One of UAE's leading financial institutions with flexible mortgage options") },
-    { name: "HSBC", description: translate("International bank offering mortgage solutions for expats and residents") }
+  const banks = [
+    "Emirates NBD", "ADCB", "Dubai Islamic Bank", "Mashreq Bank", 
+    "RAKBANK", "HSBC UAE", "FAB", "Standard Chartered UAE", 
+    "Ajman Bank", "Commercial Bank of Dubai"
   ];
 
-  const lawFirms: PartnerType[] = [
-    { name: "Al Tamimi & Company", description: translate("Largest law firm in the Middle East with real estate expertise") },
-    { name: "Baker McKenzie Habib Al Mulla", description: translate("Global law firm with strong local presence") },
-    { name: "BSA Ahmad Bin Hezeem & Associates", description: translate("Full-service law firm with real estate specialization") },
-    { name: "Clyde & Co", description: translate("International law firm with expertise in UAE property laws") }
+  const lawFirms = [
+    "Al Tamimi & Company", "Baker McKenzie", "Clyde & Co", 
+    "Hadef & Partners", "BSA Ahmad Bin Hezeem & Associates", 
+    "Galadari Advocates & Legal Consultants", "Global Advocates", 
+    "James Berry & Associates"
   ];
 
-  const freeZones: PartnerType[] = [
-    { name: "Dubai Multi Commodities Centre (DMCC)", description: translate("World's #1 free zone focused on commodities trade") },
-    { name: "Dubai International Financial Centre (DIFC)", description: translate("Leading financial hub for the Middle East") },
-    { name: "Dubai Silicon Oasis", description: translate("Technology park and free zone for tech businesses") },
-    { name: "Jebel Ali Free Zone", description: translate("One of the world's largest free zones") },
-    { name: "Dubai Media City", description: translate("Free zone for media and creative businesses") }
+  const freeZones = [
+    "Dubai Multi Commodities Centre (DMCC)", "Dubai International Financial Centre (DIFC)", 
+    "Dubai Silicon Oasis", "Dubai Media City", "Jebel Ali Free Zone (JAFZA)",
+    "Dubai Airport Free Zone (DAFZA)", "Ras Al Khaimah Economic Zone (RAKEZ)", 
+    "Ajman Free Zone", "Sharjah Media City (SHAMS)"
   ];
-
-  const renderPartnersList = (partners: PartnerType[]) => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {partners.map((partner) => (
-        <div key={partner.name} className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-          <h4 className="font-semibold text-lg mb-2">{partner.name}</h4>
-          <p className="text-gray-600 text-sm">{partner.description}</p>
-        </div>
-      ))}
-    </div>
-  );
 
   return (
     <section className="section-padding bg-gray-50">
       <div className="luxury-container">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-4">{translate("Our Partners")}</h2>
-          <div className="mx-auto w-20 h-1 bg-luxury-gold mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            {translate("We collaborate with Dubai's leading developers, financial institutions, legal experts, and free zones to provide you with comprehensive investment solutions.")}
+          <h2 className="text-3xl font-bold mb-3">{translate("Our Partners")}</h2>
+          <div className="gold-separator mx-auto mb-4" />
+          <p className="text-gray-600 max-w-3xl mx-auto">
+            {translate("We work with the UAE's most trusted organizations to ensure seamless transactions and exceptional service for our clients.")}
           </p>
         </div>
-
-        <Tabs defaultValue="developers" className="mt-8">
-          <TabsList className="flex flex-wrap justify-center space-x-2 mb-8">
+        
+        <Tabs defaultValue="developers" className="w-full">
+          <TabsList className="grid w-full grid-cols-1 sm:grid-cols-4 mb-8">
             <TabsTrigger value="developers" className="flex items-center gap-2">
               <Building className="h-4 w-4" />
-              {translate("Developers")}
+              <span>{translate("Developers")}</span>
             </TabsTrigger>
             <TabsTrigger value="banks" className="flex items-center gap-2">
-              <Building2 className="h-4 w-4" />
-              {translate("Banks")}
+              <Bank className="h-4 w-4" />
+              <span>{translate("Banks")}</span>
             </TabsTrigger>
-            <TabsTrigger value="lawFirms" className="flex items-center gap-2">
-              <GraduationCap className="h-4 w-4" />
-              {translate("Law Firms")}
+            <TabsTrigger value="law-firms" className="flex items-center gap-2">
+              <Scale className="h-4 w-4" />
+              <span>{translate("Law Firms")}</span>
             </TabsTrigger>
-            <TabsTrigger value="freeZones" className="flex items-center gap-2">
-              <Globe className="h-4 w-4" />
-              {translate("Free Zones")}
+            <TabsTrigger value="free-zones" className="flex items-center gap-2">
+              <Briefcase className="h-4 w-4" />
+              <span>{translate("Free Zones")}</span>
             </TabsTrigger>
           </TabsList>
-
-          <TabsContent value="developers" className="animate-fade-in">
-            {renderPartnersList(developers)}
+          
+          <TabsContent value="developers" className="mt-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-4">{translate("Premier Property Developers")}</h3>
+              <p className="text-gray-600 mb-6">
+                {translate("We've built strong relationships with the UAE's leading property developers, giving our clients access to exclusive launches and special incentives.")}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {developers.map((developer, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
+                    <Building className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
+                    <div className="font-medium">{developer}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </TabsContent>
-
-          <TabsContent value="banks" className="animate-fade-in">
-            {renderPartnersList(banks)}
+          
+          <TabsContent value="banks" className="mt-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-4">{translate("Financial Partners")}</h3>
+              <p className="text-gray-600 mb-6">
+                {translate("Our banking partners offer exclusive financing packages for international investors, with competitive rates and streamlined approval processes.")}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {banks.map((bank, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
+                    <Bank className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
+                    <div className="font-medium">{bank}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </TabsContent>
-
-          <TabsContent value="lawFirms" className="animate-fade-in">
-            {renderPartnersList(lawFirms)}
+          
+          <TabsContent value="law-firms" className="mt-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-4">{translate("Legal Partners")}</h3>
+              <p className="text-gray-600 mb-6">
+                {translate("We work with prestigious law firms that specialize in UAE real estate law and international investment, ensuring your transactions are legally sound.")}
+              </p>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {lawFirms.map((firm, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
+                    <Scale className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
+                    <div className="font-medium">{firm}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </TabsContent>
-
-          <TabsContent value="freeZones" className="animate-fade-in">
-            {renderPartnersList(freeZones)}
+          
+          <TabsContent value="free-zones" className="mt-4">
+            <div className="bg-white p-6 rounded-xl shadow-sm">
+              <h3 className="text-xl font-bold mb-4">{translate("Free Zone Partners")}</h3>
+              <p className="text-gray-600 mb-6">
+                {translate("For investors looking to establish a business presence in the UAE, we have partnership agreements with major free zones offering preferential setup terms.")}
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {freeZones.map((zone, index) => (
+                  <div key={index} className="bg-gray-50 p-4 rounded-lg text-center">
+                    <Briefcase className="h-6 w-6 mx-auto mb-2 text-luxury-navy" />
+                    <div className="font-medium">{zone}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </div>

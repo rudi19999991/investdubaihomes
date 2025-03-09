@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useLanguage, languages } from "@/contexts/LanguageContext";
-import CurrencySelector from "./CurrencySelector";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +23,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Properties", path: "/properties" },
+    { name: "About Us", path: "/about-us" },
+    { name: "UAE Know How", path: "/uae-know-how" },
     { name: "ROI & Investment", path: "/roi" },
     { name: "Company Setup", path: "/company-setup" },
     { name: "Financing", path: "/financing" },
@@ -87,8 +88,6 @@ const Navbar = () => {
                 </DropdownMenuContent>
               </DropdownMenu>
 
-              <CurrencySelector variant="small" />
-
               <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
                 <Link to="/contact">{translate("Book Consultation")}</Link>
               </Button>
@@ -122,10 +121,6 @@ const Navbar = () => {
                   {translate(link.name)}
                 </Link>
               ))}
-              
-              <div className="py-2 border-t border-gray-100 flex space-x-2 items-center">
-                <CurrencySelector variant="small" />
-              </div>
               
               <div className="py-2 border-t border-gray-100">
                 <p className="text-sm text-luxury-charcoal/70 mb-2">Language</p>
