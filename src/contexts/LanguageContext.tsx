@@ -160,7 +160,6 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Ready Property Example": "Ready Property Example",
     "Off-Plan Property Example": "Off-Plan Property Example",
     "Purchase Price": "Purchase Price",
-    "Annual Rental Income": "Annual Rental Income",
     "7% yield": "7% yield",
     "Income Start": "Income Start",
     "Immediate": "Immediate",
@@ -174,7 +173,9 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "After 3 years (completion)": "After 3 years (completion)",
     "Ready": "Ready",
     "Off-Plan": "Off-Plan",
-    "View Details": "View Details"
+    "View Details": "View Details",
+    "Dubai": "Dubai",
+    "Ras Al Khaimah": "Ras Al Khaimah"
   },
   "de": {
     // Navbar translations
@@ -244,7 +245,6 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     
     // ROI Calculator translations
     "ROI Calculator": "ROI-Rechner",
-    "Property Price (AED)": "Immobilienpreis (AED)",
     "Annual Rental Income (AED)": "Jährliches Mieteinnahmen (AED)",
     "Annual Expenses": "Jährliche Ausgaben",
     "Service Charge (AED)": "Servicegebühr (AED)",
@@ -339,7 +339,9 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "After 3 years (completion)": "Nach 3 Jahren (Fertigstellung)",
     "Ready": "Fertig",
     "Off-Plan": "Rohbau",
-    "View Details": "Details anzeigen"
+    "View Details": "Details anzeigen",
+    "Dubai": "Dubai",
+    "Ras Al Khaimah": "Ras Al Khaimah"
   },
   "ru": {
     // Navbar translations
@@ -409,7 +411,6 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     
     // ROI Calculator translations
     "ROI Calculator": "Калькулятор рентабельности инвестиций",
-    "Property Price (AED)": "Цена недвижимости (AED)",
     "Annual Rental Income (AED)": "Годовой доход от аренды (AED)",
     "Annual Expenses": "Годовые расходы",
     "Service Charge (AED)": "Сервисный сбор (AED)",
@@ -504,7 +505,9 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "After 3 years (completion)": "После 3 лет (завершение)",
     "Ready": "Готово",
     "Off-Plan": "Строящееся",
-    "View Details": "Подробнее"
+    "View Details": "Подробнее",
+    "Dubai": "Дубай",
+    "Ras Al Khaimah": "Рас-Аль-Хайма"
   },
   "zh": {
     // Navbar translations
@@ -533,7 +536,7 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Premium Villas": "高级别墅",
     "Exclusive Penthouses": "专属顶层公寓",
     "Off-Plan Projects": "期房项目",
-    "All rights reserved": "版权���有",
+    "All rights reserved": "版权所有",
     "Privacy Policy": "隐私政策",
     "Terms of Service": "服务条款",
     "Cookie Policy": "Cookie政策",
@@ -574,7 +577,6 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     
     // ROI Calculator translations
     "ROI Calculator": "投资回报率计算器",
-    "Property Price (AED)": "房产价格 (AED)",
     "Annual Rental Income (AED)": "年租金收入 (AED)",
     "Annual Expenses": "年度开支",
     "Service Charge (AED)": "服务费 (AED)",
@@ -669,7 +671,9 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "After 3 years (completion)": "3年后(完工)",
     "Ready": "现房",
     "Off-Plan": "期房",
-    "View Details": "查看详情"
+    "View Details": "查看详情",
+    "Dubai": "迪拜",
+    "Ras Al Khaimah": "拉斯海马"
   }
 };
 
@@ -750,4 +754,3 @@ export const LanguageProvider: React.FC<{children: React.ReactNode}> = ({ childr
 
 // Custom hook for using language
 export const useLanguage = () => useContext(LanguageContext);
-
