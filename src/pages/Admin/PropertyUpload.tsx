@@ -84,13 +84,38 @@ const PropertyUpload = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Create a formatted property object that matches the PropertyProps structure
+    const newProperty = {
+      id: `prop${Date.now()}`, // Generate a unique ID
+      title: formData.title,
+      location: formData.location,
+      price: parseFloat(formData.price),
+      type: formData.type,
+      bedrooms: parseInt(formData.bedrooms),
+      bathrooms: parseFloat(formData.bathrooms),
+      area: parseFloat(formData.area),
+      roi: parseFloat(formData.roi),
+      imageUrl: imagePreviewUrls.length > 0 ? imagePreviewUrls[0] : "https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80",
+      status: formData.status,
+      features: features,
+      description: formData.description,
+    };
+    
+    // In a real application, you would send this data to your backend/API
+    console.log("New property data:", newProperty);
+    
+    // For demo purposes, we'll store it in localStorage
+    const existingProperties = JSON.parse(localStorage.getItem('properties') || '[]');
+    const updatedProperties = [...existingProperties, newProperty];
+    localStorage.setItem('properties', JSON.stringify(updatedProperties));
+    
     // Simulate form submission with a delay
     setTimeout(() => {
       setIsSubmitting(false);
       
       toast({
         title: translate("Property Uploaded Successfully"),
-        description: translate("Your property listing has been submitted for review."),
+        description: translate("Your property listing has been added and is now visible in the properties section."),
       });
       
       // Reset form after successful submission

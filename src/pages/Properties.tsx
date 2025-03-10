@@ -1,5 +1,6 @@
 
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -7,6 +8,8 @@ import PropertyFilter from "@/components/PropertyFilter";
 import PropertyCard, { PropertyProps } from "@/components/PropertyCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CurrencySelector from "@/components/CurrencySelector";
+import { Button } from "@/components/ui/button";
+import { Upload, Plus } from "lucide-react";
 
 const Properties = () => {
   const { translate } = useLanguage();
@@ -166,7 +169,15 @@ const Properties = () => {
         
         <section className="section-padding">
           <div className="luxury-container">
-            <PropertyFilter onFilter={handleFilter} />
+            <div className="flex justify-between items-center mb-6">
+              <PropertyFilter onFilter={handleFilter} />
+              <Link to="/admin/property-upload">
+                <Button variant="admin" className="ml-4">
+                  <Plus className="h-4 w-4" />
+                  {translate("Add Property")}
+                </Button>
+              </Link>
+            </div>
             
             <div className="mt-12">
               <div className="flex justify-between items-center mb-6">
