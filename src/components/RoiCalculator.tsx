@@ -6,9 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Calculator, TrendingUp, DollarSign } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useCurrency } from "@/contexts/CurrencyContext";
 
 const RoiCalculator: React.FC = () => {
   const { translate } = useLanguage();
+  const { formatPrice } = useCurrency();
   const [propertyPrice, setPropertyPrice] = useState<number>(1000000);
   const [rentalIncome, setRentalIncome] = useState<number>(80000);
   const [expenses, setExpenses] = useState<number>(10000);
@@ -121,14 +123,14 @@ const RoiCalculator: React.FC = () => {
               <div className="bg-gray-50 p-4 rounded-lg text-center">
                 <p className="text-sm text-muted-foreground mb-1">{translate("Annual Return")}</p>
                 <p className="text-xl font-bold text-luxury-navy">
-                  AED {results.annualReturn.toLocaleString()}
+                  {formatPrice(results.annualReturn)}
                 </p>
               </div>
               
               <div className="bg-gray-50 p-4 rounded-lg text-center">
                 <p className="text-sm text-muted-foreground mb-1">{translate("Monthly Return")}</p>
                 <p className="text-xl font-bold text-luxury-navy">
-                  AED {Math.round(results.monthlyReturn).toLocaleString()}
+                  {formatPrice(Math.round(results.monthlyReturn))}
                 </p>
               </div>
               

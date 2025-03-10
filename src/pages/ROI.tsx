@@ -6,6 +6,7 @@ import HeroSection from "@/components/HeroSection";
 import { useLanguage } from "@/contexts/LanguageContext";
 import RoiCalculator from "@/components/RoiCalculator";
 import PropertyYearlyCosts from "@/components/roi/PropertyYearlyCosts";
+import ReadyVsOffPlanComparison from "@/components/roi/ReadyVsOffPlanComparison";
 
 const ROI = () => {
   const { translate } = useLanguage();
@@ -40,6 +41,8 @@ const ROI = () => {
         </section>
         
         <PropertyYearlyCosts />
+        
+        <ReadyVsOffPlanComparison />
         
         <section className="section-padding bg-white">
           <div className="luxury-container">
