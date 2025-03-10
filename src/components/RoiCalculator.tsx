@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calculator, TrendingUp, DollarSign } from "lucide-react";
+import { Calculator, TrendingUp } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useCurrency } from "@/contexts/CurrencyContext";
 
@@ -14,7 +14,7 @@ const RoiCalculator: React.FC = () => {
   const [propertyPrice, setPropertyPrice] = useState<number>(1000000);
   const [rentalIncome, setRentalIncome] = useState<number>(80000);
   const [expenses, setExpenses] = useState<number>(10000);
-  const [serviceCharge, setServiceCharge] = useState<number>(15000);
+  const [yearlyServiceCharge, setYearlyServiceCharge] = useState<number>(15000);
   const [insurance, setInsurance] = useState<number>(3000);
   const [results, setResults] = useState({
     annualReturn: 0,
@@ -23,7 +23,7 @@ const RoiCalculator: React.FC = () => {
   });
 
   const calculateRoi = () => {
-    const totalExpenses = expenses + serviceCharge + insurance;
+    const totalExpenses = expenses + yearlyServiceCharge + insurance;
     const netIncome = rentalIncome - totalExpenses;
     const roi = (netIncome / propertyPrice) * 100;
     
@@ -36,7 +36,7 @@ const RoiCalculator: React.FC = () => {
 
   useEffect(() => {
     calculateRoi();
-  }, [propertyPrice, rentalIncome, expenses, serviceCharge, insurance]);
+  }, [propertyPrice, rentalIncome, expenses, yearlyServiceCharge, insurance]);
 
   return (
     <Card className="w-full">
@@ -74,12 +74,12 @@ const RoiCalculator: React.FC = () => {
             
             <div className="space-y-3">
               <div>
-                <Label htmlFor="service-charge">{translate("Service Charge (AED)")}</Label>
+                <Label htmlFor="yearly-service-charge">{translate("Yearly Service Charge (AED)")}</Label>
                 <Input
-                  id="service-charge"
+                  id="yearly-service-charge"
                   type="number"
-                  value={serviceCharge}
-                  onChange={(e) => setServiceCharge(Number(e.target.value))}
+                  value={yearlyServiceCharge}
+                  onChange={(e) => setYearlyServiceCharge(Number(e.target.value))}
                   className="mt-1"
                 />
                 <p className="text-sm text-muted-foreground mt-1">
