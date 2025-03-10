@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, createContext, useContext } from "react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -15,9 +16,13 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     // Navbar translations
     "Home": "Home",
     "Properties": "Properties",
+    "About Us": "About Us",
+    "UAE Know How": "UAE Know How",
     "ROI & Investment": "ROI & Investment",
     "Company Setup": "Company Setup",
     "Financing": "Financing",
+    "Crypto Buying": "Crypto Buying",
+    "Blog": "Blog",
     "Contact": "Contact",
     "Book Consultation": "Book Consultation",
     "Language Detected": "Language Detected",
@@ -61,7 +66,6 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "We work with leading banks": "We work with leading banks and financial institutions to offer you competitive rates and flexible financing solutions.",
     "Get Personalized Financing Advice": "Get Personalized Financing Advice",
     "Mortgage Calculator": "Mortgage Calculator",
-    "Property Price (AED)": "Property Price (AED)",
     "Down Payment (%)": "Down Payment (%)",
     "Interest Rate (%)": "Interest Rate (%)",
     "Loan Term (Years)": "Loan Term (Years)",
@@ -137,15 +141,19 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Construction-Linked Payment Plans": "Construction-Linked Payment Plans",
     "For off-plan properties, payments are often tied to construction milestones, letting you spread the cost throughout the build phase.": "For off-plan properties, payments are often tied to construction milestones, letting you spread the cost throughout the build phase.",
     "DLD Fee Waivers": "DLD Fee Waivers",
-    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.",
+    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs."
   },
   "de": {
     // Navbar translations
     "Home": "Startseite",
     "Properties": "Immobilien",
+    "About Us": "Über uns",
+    "UAE Know How": "VAE Know-how",
     "ROI & Investment": "ROI & Investition",
     "Company Setup": "Firmengründung",
     "Financing": "Finanzierung",
+    "Crypto Buying": "Krypto-Kauf",
+    "Blog": "Blog",
     "Contact": "Kontakt",
     "Book Consultation": "Beratung buchen",
     "Language Detected": "Sprache erkannt",
@@ -265,15 +273,19 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Construction-Linked Payment Plans": "Baufortschrittsabhängige Zahlungspläne",
     "For off-plan properties, payments are often tied to construction milestones, letting you spread the cost throughout the build phase.": "Bei Immobilien im Bauplan sind Zahlungen oft an Baufortschritte gekoppelt, sodass Sie die Kosten über die Bauphase verteilen können.",
     "DLD Fee Waivers": "DLD-Gebührenerlasse",
-    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Einige Entwickler bieten an, die Registrierungsgebühr des Dubai Land Department (4%) zu übernehmen, was Ihre Anfangskosten effektiv reduziert.",
+    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Einige Entwickler bieten an, die Registrierungsgebühr des Dubai Land Department (4%) zu übernehmen, was Ihre Anfangskosten effektiv reduziert."
   },
   "ru": {
     // Navbar translations
     "Home": "Главная",
     "Properties": "Недвижимость",
+    "About Us": "О нас",
+    "UAE Know How": "Все об ОАЭ",
     "ROI & Investment": "ROI и Инвестиции",
     "Company Setup": "Регистрация компании",
     "Financing": "Финансирование",
+    "Crypto Buying": "Покупка за криптовалюту",
+    "Blog": "Блог",
     "Contact": "Контакты",
     "Book Consultation": "Записаться на консультацию",
     "Language Detected": "Язык определен",
@@ -393,15 +405,19 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Construction-Linked Payment Plans": "Планы оплаты, связанные со строительством",
     "For off-plan properties, payments are often tied to construction milestones, letting you spread the cost throughout the build phase.": "Для объектов на стадии строительства платежи часто привязаны к этапам строительства, позволяя распределить стоимость на протяжении всего этапа строительства.",
     "DLD Fee Waivers": "Освобождение от сборов DLD",
-    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Некоторые застройщики предлагают покрыть регистрационный сбор Земельного департамента Дубая (4%), что эффективно снижает ваши первоначальные затраты.",
+    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "Некоторые застройщики предлагают покрыть регистрационный сбор Земельного департамента Дубая (4%), что эффективно снижает ваши первоначальные затраты."
   },
   "zh": {
     // Navbar translations
     "Home": "首页",
     "Properties": "房产",
+    "About Us": "关于我们",
+    "UAE Know How": "阿联酋知识",
     "ROI & Investment": "投资回报",
     "Company Setup": "公司设立",
     "Financing": "融资",
+    "Crypto Buying": "加密货币购买",
+    "Blog": "博客",
     "Contact": "联系我们",
     "Book Consultation": "预约咨询",
     "Language Detected": "检测到语言",
@@ -521,7 +537,7 @@ export const translations: {[key: string]: {[key: string]: string}} = {
     "Construction-Linked Payment Plans": "与建筑进度相关的付款计划",
     "For off-plan properties, payments are often tied to construction milestones, letting you spread the cost throughout the build phase.": "对于期房，付款通常与建筑里程碑相关联，让您在整个建造阶段分摊成本。",
     "DLD Fee Waivers": "DLD费用减免",
-    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "一些开发商提供支付迪拜土地部门登记费（4%），有效降低您的初始成本。",
+    "Some developers offer to cover the Dubai Land Department registration fee (4%), effectively reducing your initial costs.": "一些开发商提供支付迪拜土地部门登记费（4%），有效降低您的初始成本。"
   }
 };
 
