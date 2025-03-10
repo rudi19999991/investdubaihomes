@@ -33,7 +33,20 @@ const Contact = () => {
               <ContactForm />
             </div>
             
-            {/* Contact Information moved below the form */}
+            {/* Map Section */}
+            <div className="rounded-lg overflow-hidden shadow-lg h-[400px] mb-12">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.1867105621236!2d55.13459287596828!3d25.076993077812768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b5402c126e3%3A0xb9511e6655c46d7c!2sDubai%20Marina!5e0!3m2!1sen!2sae!4v1697106781320!5m2!1sen!2sae" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            
+            {/* Contact Information moved to the bottom */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h3 className="text-xl font-bold mb-4 flex items-center">
@@ -74,11 +87,11 @@ const Contact = () => {
                   <h4 className="text-lg font-medium mb-4">{translate("Instant Messaging")}</h4>
                   <div className="flex flex-wrap gap-4">
                     <Button size="lg" className="bg-[#25D366] hover:bg-[#25D366]/90">
-                      <MessageCircle className="mr-2 h-5 w-5" /> WhatsApp
+                      <MessageCircle className="mr-2 h-5 w-5" /> {translate("WhatsApp")}
                     </Button>
                     
                     <Button size="lg" className="bg-[#0088cc] hover:bg-[#0088cc]/90">
-                      <MessageCircle className="mr-2 h-5 w-5" /> Telegram
+                      <MessageCircle className="mr-2 h-5 w-5" /> {translate("Telegram")}
                     </Button>
                   </div>
                 </div>
@@ -101,28 +114,6 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </section>
-        
-        {/* Map Section */}
-        <section className="py-12">
-          <div className="luxury-container">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold">{translate("Visit Our Office")}</h2>
-              <div className="gold-separator mx-auto" />
-            </div>
-            
-            <div className="rounded-lg overflow-hidden shadow-lg h-[400px]">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.1867105621236!2d55.13459287596828!3d25.076993077812768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6b5402c126e3%3A0xb9511e6655c46d7c!2sDubai%20Marina!5e0!3m2!1sen!2sae!4v1697106781320!5m2!1sen!2sae" 
-                width="100%" 
-                height="100%" 
-                style={{ border: 0 }} 
-                allowFullScreen 
-                loading="lazy" 
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
             </div>
           </div>
         </section>

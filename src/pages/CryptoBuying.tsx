@@ -11,6 +11,39 @@ import { Button } from "@/components/ui/button";
 const CryptoBuying = () => {
   const { translate } = useLanguage();
   
+  const cryptoLogos = [
+    { 
+      name: "Bitcoin (BTC)", 
+      logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png",
+      color: "#F7931A"
+    },
+    { 
+      name: "Ethereum (ETH)", 
+      logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png",
+      color: "#627EEA"
+    },
+    { 
+      name: "Tether (USDT)", 
+      logo: "https://cryptologos.cc/logos/tether-usdt-logo.png",
+      color: "#26A17B"
+    },
+    { 
+      name: "Binance Coin (BNB)", 
+      logo: "https://cryptologos.cc/logos/bnb-bnb-logo.png",
+      color: "#F0B90B"
+    },
+    { 
+      name: "USD Coin (USDC)", 
+      logo: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png",
+      color: "#2775CA"
+    },
+    { 
+      name: "Solana (SOL)", 
+      logo: "https://cryptologos.cc/logos/solana-sol-logo.png",
+      color: "#00FFA3"
+    }
+  ];
+  
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
@@ -102,28 +135,26 @@ const CryptoBuying = () => {
                     </ul>
                   </div>
                   
+                  {/* Cryptocurrency Logos Section */}
                   <div className="bg-gray-50 p-6 rounded-lg">
                     <h3 className="text-xl font-bold mb-3">{translate("Popular Cryptocurrencies Accepted")}</h3>
                     <p className="mb-4">{translate("Many Dubai developers accept the following cryptocurrencies:")}</p>
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">Bitcoin (BTC)</p>
-                      </div>
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">Ethereum (ETH)</p>
-                      </div>
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">USDT (Tether)</p>
-                      </div>
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">Binance Coin (BNB)</p>
-                      </div>
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">USD Coin (USDC)</p>
-                      </div>
-                      <div className="bg-white p-4 rounded shadow-sm text-center">
-                        <p className="font-semibold">Solana (SOL)</p>
-                      </div>
+                    
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                      {cryptoLogos.map((crypto, index) => (
+                        <div key={index} className="bg-white p-4 rounded-lg shadow-sm text-center flex flex-col items-center justify-center">
+                          <div className="h-16 w-16 flex items-center justify-center mb-3">
+                            <img 
+                              src={crypto.logo} 
+                              alt={crypto.name} 
+                              className="max-h-full max-w-full"
+                            />
+                          </div>
+                          <p className="font-semibold" style={{ color: crypto.color }}>
+                            {translate(crypto.name)}
+                          </p>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   
