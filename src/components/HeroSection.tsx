@@ -16,7 +16,7 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   subtitle,
-  videoUrl = "https://player.vimeo.com/external/409409657.sd.mp4?s=7df8c5666a9e013fea27cb07e52c5993b90b4445&profile_id=139&oauth2_token_id=57447761", // Default Dubai video
+  videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4", // Default Dubai video
   backgroundImage = "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80", // Default Dubai skyline image (fallback)
   showCta = true,
 }) => {
@@ -61,7 +61,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 animate-slide-up">
             <Button 
               size="lg" 
-              className="bg-luxury-gold hover:bg-luxury-gold/90 text-white px-6"
+              className="bg-luxury-gold hover:bg-luxury-gold/80 text-white px-6"
               asChild
             >
               <Link to="/properties">
@@ -72,7 +72,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-white text-white hover:bg-white hover:text-luxury-navy"
+              className="border-white text-luxury-gold hover:bg-white/80 hover:text-luxury-gold"
               asChild
             >
               <Link to="/contact">
@@ -87,3 +87,4 @@ const HeroSection: React.FC<HeroSectionProps> = ({
 };
 
 export default HeroSection;
+
