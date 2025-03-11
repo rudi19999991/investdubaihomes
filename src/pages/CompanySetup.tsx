@@ -16,7 +16,7 @@ const CompanySetup = () => {
       id: "dmcc",
       name: "Dubai Multi Commodities Centre (DMCC)",
       description: "World's leading free zone and Dubai government authority for commodities trade and enterprise.",
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://dynasty-uae.com/wp-content/uploads/2023/10/pic-1.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
       benefits: [
         "100% foreign ownership",
         "0% corporate and personal income tax",
@@ -33,7 +33,7 @@ const CompanySetup = () => {
       id: "rakez",
       name: "Ras Al Khaimah Economic Zone (RAKEZ)",
       description: "A powerhouse business and industrial hub that offers customizable solutions to free zone and non-free zone businesses.",
-      image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://media.licdn.com/dms/image/v2/D5612AQEWltGytcmOrQ/article-cover_image-shrink_720_1280/B56ZUh_0ILGQAI-/0/1740032132778?e=2147483647&v=beta&t=kpQBrqYRYpOj9LjVMGvXRwDoKeXx6mrSIBGawDoCJf8",
       benefits: [
         "100% foreign ownership",
         "0% corporate and personal income tax for 50 years (renewable)",
@@ -50,7 +50,7 @@ const CompanySetup = () => {
       id: "ifza",
       name: "International Free Zone Authority (IFZA)",
       description: "A dynamic free zone situated in Dubai offering premium company formation solutions.",
-      image: "https://images.unsplash.com/photo-1512799545738-0625ef92a288?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      image: "https://chooseuae.com/wp-content/uploads/5-min-138.jpg",
       benefits: [
         "100% foreign ownership",
         "0% corporate and personal income tax",
