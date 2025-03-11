@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Ship, MapPin, Building, Home, Mountain, Hotel, Trophy, TrendingUp } from "lucide-react";
 import LocationCard from "./LocationCard";
@@ -114,6 +115,18 @@ const RAKLocations = () => {
           rentalYield="6-8%"
           established="2018"
           onViewDevelopments={() => handleViewDevelopments("Jebel Jais")}
+        />
+        
+        <LocationCard 
+          icon={Hotel}
+          title="Wynn Resort Area"
+          imageUrl="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          description="Exclusive properties surrounding the upcoming Wynn integrated resort and casino, expected to become a premier investment area for luxury properties and hotels."
+          propertyTypes="Luxury Apartments, Hotel Residences"
+          averagePrice="AED 1,200 - 2,000/sqft"
+          rentalYield="9-12% (projected)"
+          established="2023-2026"
+          onViewDevelopments={() => handleViewDevelopments("Wynn Resort Area")}
         />
       </div>
     </div>

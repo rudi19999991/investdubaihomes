@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
@@ -9,8 +8,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PropertyProps } from "@/components/PropertyCard";
 import { MapPin, Building, Bed, Bath, Home, Calendar, ArrowLeft, ArrowRight, Phone, Mail, Percent, ChevronLeft } from "lucide-react";
+import { useCurrency } from "@/contexts/CurrencyContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 
-// Mock property data
 const propertyData: Record<string, PropertyProps> = {
   "prop1": {
     id: "prop1",
@@ -92,7 +92,6 @@ const propertyData: Record<string, PropertyProps> = {
   },
 };
 
-// Extended property data with more details
 const extendedPropertyData: Record<string, {
   description: string;
   features: string[];
@@ -198,22 +197,21 @@ const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const property = id ? propertyData[id] : null;
   const extendedInfo = id ? extendedPropertyData[id] : null;
+  const { formatPrice, currentCurrency } = useCurrency();
+  const { translate } = useLanguage();
   
-  const formattedPrice = property ? new Intl.NumberFormat("en-US").format(property.price) : "";
-  
-  // If property not found
   if (!property || !extendedInfo) {
     return (
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <main className="flex-grow pt-20">
           <div className="luxury-container py-20 text-center">
-            <h1 className="text-3xl font-bold mb-4">Property Not Found</h1>
-            <p className="mb-8">The property you are looking for does not exist or has been removed.</p>
+            <h1 className="text-3xl font-bold mb-4">{translate("Property Not Found")}</h1>
+            <p className="mb-8">{translate("The property you are looking for does not exist or has been removed.")}</p>
             <Button asChild>
               <Link to="/properties">
                 <ChevronLeft className="mr-2 h-4 w-4" />
-                Back to Properties
+                {translate("Back to Properties")}
               </Link>
             </Button>
           </div>
@@ -228,14 +226,13 @@ const PropertyDetail = () => {
       <Navbar />
       
       <main className="flex-grow pt-20">
-        {/* Property Navigation */}
         <div className="bg-gray-100 py-4">
           <div className="luxury-container">
             <div className="flex items-center justify-between">
               <Button variant="ghost" size="sm" asChild>
                 <Link to="/properties">
                   <ChevronLeft className="mr-2 h-4 w-4" />
-                  Back to Properties
+                  {translate("Back to Properties")}
                 </Link>
               </Button>
               <div className="flex items-center space-x-2">
@@ -246,7 +243,7 @@ const PropertyDetail = () => {
                 >
                   <Link to={`/properties/${Number(id) > 1 ? `prop${Number(id?.replace('prop', '')) - 1}` : 'prop6'}`}>
                     <ArrowLeft className="mr-2 h-4 w-4" />
-                    Previous
+                    {translate("Previous")}
                   </Link>
                 </Button>
                 <Button 
@@ -255,7 +252,7 @@ const PropertyDetail = () => {
                   asChild
                 >
                   <Link to={`/properties/${Number(id?.replace('prop', '')) < 6 ? `prop${Number(id?.replace('prop', '')) + 1}` : 'prop1'}`}>
-                    Next
+                    {translate("Next")}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
@@ -264,7 +261,6 @@ const PropertyDetail = () => {
           </div>
         </div>
         
-        {/* Property Header */}
         <section className="luxury-container py-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
@@ -276,16 +272,18 @@ const PropertyDetail = () => {
             </div>
             <div className="flex flex-col items-end">
               <p className="text-3xl font-bold text-luxury-gold">
-                AED {formattedPrice}
+                {formatPrice(property.price)}
+                <span className="text-xs ml-1 text-gray-500">
+                  {currentCurrency.code !== "AED" && `(${currentCurrency.code})`}
+                </span>
               </p>
               <Badge className={`${property.status === "ready" ? "bg-green-600" : "bg-luxury-gold"}`}>
-                {property.status === "ready" ? "Ready to Move" : "Off-Plan"}
+                {property.status === "ready" ? translate("Ready to Move") : translate("Off-Plan")}
               </Badge>
             </div>
           </div>
         </section>
         
-        {/* Property Gallery */}
         <section className="luxury-container pb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="md:col-span-2 h-96">
@@ -314,20 +312,18 @@ const PropertyDetail = () => {
           </div>
         </section>
         
-        {/* Property Details & Contact */}
         <section className="luxury-container pb-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
             <div className="lg:col-span-2">
               <Tabs defaultValue="overview" className="w-full">
                 <TabsList className="grid w-full grid-cols-3">
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="features">Features</TabsTrigger>
+                  <TabsTrigger value="overview">{translate("Overview")}</TabsTrigger>
+                  <TabsTrigger value="features">{translate("Features")}</TabsTrigger>
                   {property.status === "offplan" && (
-                    <TabsTrigger value="payment">Payment Plan</TabsTrigger>
+                    <TabsTrigger value="payment">{translate("Payment Plan")}</TabsTrigger>
                   )}
                   {property.status === "ready" && (
-                    <TabsTrigger value="roi">ROI Analysis</TabsTrigger>
+                    <TabsTrigger value="roi">{translate("ROI Analysis")}</TabsTrigger>
                   )}
                 </TabsList>
                 
@@ -336,39 +332,39 @@ const PropertyDetail = () => {
                     <CardContent className="pt-6">
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-y-6 mb-6">
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">Type</span>
+                          <span className="text-muted-foreground text-sm">{translate("Type")}</span>
                           <span className="font-medium flex items-center">
                             <Building className="h-4 w-4 mr-1 text-luxury-navy" />
                             {property.type}
                           </span>
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">Bedrooms</span>
+                          <span className="text-muted-foreground text-sm">{translate("Bedrooms")}</span>
                           <span className="font-medium flex items-center">
                             <Bed className="h-4 w-4 mr-1 text-luxury-navy" />
                             {property.bedrooms}
                           </span>
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">Bathrooms</span>
+                          <span className="text-muted-foreground text-sm">{translate("Bathrooms")}</span>
                           <span className="font-medium flex items-center">
                             <Bath className="h-4 w-4 mr-1 text-luxury-navy" />
                             {property.bathrooms}
                           </span>
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">Area</span>
+                          <span className="text-muted-foreground text-sm">{translate("Area")}</span>
                           <span className="font-medium flex items-center">
                             <Home className="h-4 w-4 mr-1 text-luxury-navy" />
                             {property.area} sqft
                           </span>
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">Developer</span>
+                          <span className="text-muted-foreground text-sm">{translate("Developer")}</span>
                           <span className="font-medium">{extendedInfo.developer}</span>
                         </div>
                         <div className="flex flex-col">
-                          <span className="text-muted-foreground text-sm">ROI</span>
+                          <span className="text-muted-foreground text-sm">{translate("ROI")}</span>
                           <span className="font-medium flex items-center">
                             <Percent className="h-4 w-4 mr-1 text-luxury-navy" />
                             {property.roi}%
@@ -376,7 +372,7 @@ const PropertyDetail = () => {
                         </div>
                         {extendedInfo.completionDate && (
                           <div className="flex flex-col">
-                            <span className="text-muted-foreground text-sm">Completion</span>
+                            <span className="text-muted-foreground text-sm">{translate("Completion")}</span>
                             <span className="font-medium flex items-center">
                               <Calendar className="h-4 w-4 mr-1 text-luxury-navy" />
                               {extendedInfo.completionDate}
@@ -386,12 +382,12 @@ const PropertyDetail = () => {
                       </div>
                       
                       <div className="space-y-4">
-                        <h3 className="text-lg font-medium">Description</h3>
+                        <h3 className="text-lg font-medium">{translate("Description")}</h3>
                         <p className="text-muted-foreground">
                           {extendedInfo.description}
                         </p>
                         
-                        <h3 className="text-lg font-medium pt-4">Nearby Places</h3>
+                        <h3 className="text-lg font-medium pt-4">{translate("Nearby Places")}</h3>
                         <ul className="list-disc pl-5 text-muted-foreground">
                           {extendedInfo.nearbyPlaces.map((place, index) => (
                             <li key={index}>{place}</li>
@@ -405,7 +401,7 @@ const PropertyDetail = () => {
                 <TabsContent value="features" className="mt-6">
                   <Card>
                     <CardContent className="pt-6">
-                      <h3 className="text-lg font-medium mb-4">Key Features</h3>
+                      <h3 className="text-lg font-medium mb-4">{translate("Key Features")}</h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {extendedInfo.features.map((feature, index) => (
                           <div key={index} className="flex items-center">
@@ -422,26 +418,26 @@ const PropertyDetail = () => {
                   <TabsContent value="payment" className="mt-6">
                     <Card>
                       <CardContent className="pt-6">
-                        <h3 className="text-lg font-medium mb-4">Payment Plan</h3>
+                        <h3 className="text-lg font-medium mb-4">{translate("Payment Plan")}</h3>
                         <div className="space-y-4">
                           <div className="bg-gray-100 p-4 rounded-lg">
                             <div className="flex justify-between items-center">
-                              <span className="font-medium">Down Payment</span>
+                              <span className="font-medium">{translate("Down Payment")}</span>
                               <span className="text-luxury-gold font-bold">{extendedInfo.paymentPlan.downPayment}%</span>
                             </div>
                             <p className="text-sm text-muted-foreground mt-1">
-                              AED {new Intl.NumberFormat("en-US").format(property.price * extendedInfo.paymentPlan.downPayment / 100)}
+                              {formatPrice(property.price * extendedInfo.paymentPlan.downPayment / 100)}
                             </p>
                           </div>
                           
                           {extendedInfo.paymentPlan.installments.map((installment, index) => (
                             <div key={index} className="bg-gray-100 p-4 rounded-lg">
                               <div className="flex justify-between items-center">
-                                <span className="font-medium">{installment.milestone}</span>
+                                <span className="font-medium">{translate(installment.milestone)}</span>
                                 <span className="text-luxury-gold font-bold">{installment.percentage}%</span>
                               </div>
                               <p className="text-sm text-muted-foreground mt-1">
-                                AED {new Intl.NumberFormat("en-US").format(property.price * installment.percentage / 100)}
+                                {formatPrice(property.price * installment.percentage / 100)}
                               </p>
                             </div>
                           ))}
@@ -455,35 +451,42 @@ const PropertyDetail = () => {
                   <TabsContent value="roi" className="mt-6">
                     <Card>
                       <CardContent className="pt-6">
-                        <h3 className="text-lg font-medium mb-4">Investment Analysis</h3>
+                        <h3 className="text-lg font-medium mb-4">{translate("Investment Analysis")}</h3>
                         <div className="space-y-6">
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div className="bg-gray-100 p-4 rounded-lg text-center">
-                              <p className="text-sm text-muted-foreground">Annual ROI</p>
+                              <p className="text-sm text-muted-foreground">{translate("Annual ROI")}</p>
                               <p className="text-2xl font-bold text-luxury-gold">{property.roi}%</p>
                             </div>
                             <div className="bg-gray-100 p-4 rounded-lg text-center">
-                              <p className="text-sm text-muted-foreground">Est. Annual Income</p>
+                              <p className="text-sm text-muted-foreground">{translate("Est. Annual Income")}</p>
                               <p className="text-2xl font-bold text-luxury-navy">
-                                AED {new Intl.NumberFormat("en-US").format(Math.round(property.price * property.roi / 100))}
+                                {formatPrice(Math.round(property.price * property.roi / 100))}
                               </p>
                             </div>
                             <div className="bg-gray-100 p-4 rounded-lg text-center">
-                              <p className="text-sm text-muted-foreground">Est. Monthly Rent</p>
+                              <p className="text-sm text-muted-foreground">{translate("Est. Monthly Rent")}</p>
                               <p className="text-2xl font-bold text-luxury-navy">
-                                AED {new Intl.NumberFormat("en-US").format(Math.round(property.price * property.roi / 100 / 12))}
+                                {formatPrice(Math.round(property.price * property.roi / 100 / 12))}
                               </p>
                             </div>
                           </div>
                           
+                          <div className="bg-gray-100 p-4 rounded-lg">
+                            <p className="text-sm text-muted-foreground">{translate("Yearly Service Charge")}</p>
+                            <p className="text-xl font-bold text-luxury-navy mt-1">
+                              {formatPrice(Math.round(property.price * 0.01))}
+                            </p>
+                          </div>
+                          
                           <div className="bg-luxury-navy/10 p-4 rounded-lg">
-                            <h4 className="font-medium mb-2">Investment Advantages</h4>
+                            <h4 className="font-medium mb-2">{translate("Investment Advantages")}</h4>
                             <ul className="list-disc pl-5 text-muted-foreground space-y-1">
-                              <li>0% Property Tax</li>
-                              <li>0% Income Tax on Rental Income</li>
-                              <li>Strong Tenant Demand in {property.location}</li>
-                              <li>High Capital Appreciation Potential</li>
-                              <li>Eligible for Residence Visa</li>
+                              <li>{translate("0% Property Tax")}</li>
+                              <li>{translate("0% Income Tax on Rental Income")}</li>
+                              <li>{translate("Strong Tenant Demand in")} {property.location}</li>
+                              <li>{translate("High Capital Appreciation Potential")}</li>
+                              <li>{translate("Eligible for Residence Visa")}</li>
                             </ul>
                           </div>
                         </div>
@@ -494,50 +497,25 @@ const PropertyDetail = () => {
               </Tabs>
             </div>
             
-            {/* Contact Sidebar */}
             <div>
               <Card className="bg-white shadow-md">
                 <CardContent className="pt-6">
-                  <h3 className="text-lg font-medium mb-4">Interested in this property?</h3>
+                  <h3 className="text-lg font-medium mb-4">{translate("Schedule a Viewing")}</h3>
                   <div className="space-y-4">
                     <Button className="w-full bg-luxury-gold hover:bg-luxury-gold/90">
                       <Phone className="mr-2 h-4 w-4" />
-                      Schedule Viewing
+                      {translate("Schedule Viewing")}
                     </Button>
                     <Button variant="outline" className="w-full">
                       <Mail className="mr-2 h-4 w-4" />
-                      Request Information
+                      {translate("Request Information")}
                     </Button>
-                    
-                    <div className="bg-gray-100 p-4 rounded-lg mt-6">
-                      <h4 className="font-medium mb-2">Investment Advisor</h4>
-                      <div className="flex items-center space-x-4 mb-4">
-                        <div className="w-12 h-12 rounded-full bg-luxury-navy flex items-center justify-center text-white">
-                          <span className="text-lg font-bold">AB</span>
-                        </div>
-                        <div>
-                          <p className="font-medium">Alex Brown</p>
-                          <p className="text-sm text-muted-foreground">Senior Property Consultant</p>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                          <Phone className="mr-2 h-4 w-4" />
-                          +971 58 123 4567
-                        </Button>
-                        <Button variant="ghost" size="sm" className="w-full justify-start">
-                          <Mail className="mr-2 h-4 w-4" />
-                          alex@investdubai.com
-                        </Button>
-                      </div>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
               
-              {/* Similar Properties */}
               <div className="mt-6">
-                <h3 className="text-lg font-medium mb-4">Similar Properties</h3>
+                <h3 className="text-lg font-medium mb-4">{translate("Similar Properties")}</h3>
                 <div className="space-y-4">
                   {Object.values(propertyData)
                     .filter(p => p.id !== property.id && p.type === property.type)
@@ -553,7 +531,7 @@ const PropertyDetail = () => {
                           <div className="flex-1">
                             <h4 className="font-medium line-clamp-1">{p.title}</h4>
                             <p className="text-sm text-muted-foreground">{p.location}</p>
-                            <p className="text-luxury-gold font-medium">AED {new Intl.NumberFormat("en-US").format(p.price)}</p>
+                            <p className="text-luxury-gold font-medium">{formatPrice(p.price)}</p>
                           </div>
                         </div>
                       </Link>
@@ -564,15 +542,14 @@ const PropertyDetail = () => {
           </div>
         </section>
         
-        {/* Call to Action */}
         <section className="bg-luxury-navy text-white py-12">
           <div className="luxury-container text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to invest in Dubai real estate?</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">{translate("Ready to invest in Dubai real estate?")}</h2>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              Our team of experts is ready to help you find the perfect property investment opportunity.
+              {translate("Our team of experts is ready to help you find the perfect property investment opportunity.")}
             </p>
             <Button size="lg" className="bg-luxury-gold hover:bg-luxury-gold/90">
-              Book a Consultation
+              {translate("Book a Consultation")}
             </Button>
           </div>
         </section>

@@ -8,8 +8,6 @@ import PropertyFilter from "@/components/PropertyFilter";
 import PropertyCard, { PropertyProps } from "@/components/PropertyCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CurrencySelector from "@/components/CurrencySelector";
-import { Button } from "@/components/ui/button";
-import { Upload, Plus } from "lucide-react";
 
 const Properties = () => {
   const { translate } = useLanguage();
@@ -171,12 +169,6 @@ const Properties = () => {
           <div className="luxury-container">
             <div className="flex justify-between items-center mb-6">
               <PropertyFilter onFilter={handleFilter} />
-              <Link to="/admin/property-upload">
-                <Button variant="admin" className="ml-4">
-                  <Plus className="h-4 w-4" />
-                  {translate("Add Property")}
-                </Button>
-              </Link>
             </div>
             
             <div className="mt-12">

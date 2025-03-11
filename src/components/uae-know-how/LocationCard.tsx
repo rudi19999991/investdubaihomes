@@ -1,9 +1,8 @@
 
 import React from "react";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { LucideIcon } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface LocationCardProps {
   icon: LucideIcon;
@@ -14,10 +13,10 @@ interface LocationCardProps {
   averagePrice: string;
   rentalYield: string;
   established: string;
-  onViewDevelopments?: () => void;
+  onViewDevelopments: () => void;
 }
 
-const LocationCard: React.FC<LocationCardProps> = ({
+const LocationCard = ({
   icon: Icon,
   title,
   imageUrl,
@@ -27,62 +26,59 @@ const LocationCard: React.FC<LocationCardProps> = ({
   rentalYield,
   established,
   onViewDevelopments,
-}) => {
+}: LocationCardProps) => {
   const { translate } = useLanguage();
-
+  
   return (
-    <Card>
-      <CardHeader className="bg-luxury-navy text-white rounded-t-lg">
-        <div className="flex items-center">
-          <Icon className="h-6 w-6 mr-3" />
-          <CardTitle>{translate(title)}</CardTitle>
-        </div>
-      </CardHeader>
-      <CardContent className="pt-6">
-        <div className="aspect-video rounded-md overflow-hidden mb-4">
-          <img 
-            src={imageUrl} 
-            alt={title} 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        <div className="space-y-4">
-          <p className="text-gray-600">
-            {translate(description)}
-          </p>
-          
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div>
-              <p className="font-semibold">{translate("Property Types")}:</p>
-              <p className="text-gray-600">{translate(propertyTypes)}</p>
-            </div>
-            <div>
-              <p className="font-semibold">{translate("Average Price")}:</p>
-              <p className="text-gray-600">{averagePrice}</p>
-            </div>
-            <div>
-              <p className="font-semibold">{translate("Rental Yield")}:</p>
-              <p className="text-gray-600">{rentalYield}</p>
-            </div>
-            <div>
-              <p className="font-semibold">{translate("Established")}:</p>
-              <p className="text-gray-600">{established}</p>
+    <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
+      <div className="relative h-48 overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="object-cover w-full h-full"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
+          <div className="p-4 text-white">
+            <div className="flex items-center mb-1">
+              <Icon className="h-5 w-5 mr-2 text-luxury-gold" />
+              <h3 className="text-xl font-bold">{translate(title)}</h3>
             </div>
           </div>
         </div>
-      </CardContent>
-      {onViewDevelopments && (
-        <CardFooter>
-          <Button 
-            onClick={onViewDevelopments} 
-            className="w-full bg-luxury-gold hover:bg-amber-600 text-white"
-          >
-            {translate("View Developments")}
-          </Button>
-        </CardFooter>
-      )}
-    </Card>
+      </div>
+
+      <div className="p-5">
+        <p className="text-gray-600 mb-4 line-clamp-2">
+          {translate(description)}
+        </p>
+
+        <div className="grid grid-cols-2 gap-4 mb-4">
+          <div>
+            <p className="text-sm text-gray-500">{translate("Property Types")}</p>
+            <p className="font-medium">{translate(propertyTypes)}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">{translate("Average Price")}</p>
+            <p className="font-medium">{averagePrice}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">{translate("Rental Yield")}</p>
+            <p className="font-medium text-green-600">{rentalYield}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-500">{translate("Established")}</p>
+            <p className="font-medium">{established}</p>
+          </div>
+        </div>
+
+        <Button
+          onClick={onViewDevelopments}
+          className="w-full bg-luxury-navy hover:bg-luxury-navy/90"
+        >
+          {translate("View Developments")}
+        </Button>
+      </div>
+    </div>
   );
 };
 
