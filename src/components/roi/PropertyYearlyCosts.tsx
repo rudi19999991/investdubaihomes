@@ -12,35 +12,35 @@ const PropertyYearlyCosts = () => {
   const costsData = [
     {
       icon: Building,
-      title: "costs.serviceCharges.title",
-      description: "costs.serviceCharges.description",
-      rate: "costs.serviceCharges.rate",
+      title: "Service Charges",
+      description: "Annual fees charged by building management for maintenance of common areas",
+      rate: "15-60 AED per sq ft per year",
       example: 2000000,
-      notes: "costs.serviceCharges.notes"
+      notes: "Varies by building quality and amenities"
     },
     {
       icon: Shield,
-      title: "costs.propertyInsurance.title",
-      description: "costs.propertyInsurance.description",
-      rate: "costs.propertyInsurance.rate",
+      title: "Property Insurance",
+      description: "Annual building insurance premium",
+      rate: "0.1-0.3% of property value",
       example: 3000,
-      notes: "costs.propertyInsurance.notes"
+      notes: "Required for all properties"
     },
     {
       icon: Receipt,
-      title: "costs.dewaFees.title",
-      description: "costs.dewaFees.description",
-      rate: "costs.dewaFees.rate",
+      title: "DEWA Fees",
+      description: "Dubai Electricity and Water Authority charges",
+      rate: "Housing fee (5% of annual rent)",
       example: 5000,
-      notes: "costs.dewaFees.notes"
+      notes: "Charged monthly through utility bills"
     },
     {
       icon: Ruler,
-      title: "costs.chillerFees.title",
-      description: "costs.chillerFees.description",
-      rate: "costs.chillerFees.rate",
+      title: "Chiller Fees",
+      description: "District cooling charges for air conditioning",
+      rate: "Variable costs based on consumption",
       example: 12000,
-      notes: "costs.chillerFees.notes"
+      notes: "Applies to properties with central cooling systems"
     }
   ];
 
@@ -48,9 +48,9 @@ const PropertyYearlyCosts = () => {
     <section className="py-12 bg-gray-50">
       <div className="luxury-container">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold">{translate("costs.yearlyCosts")}</h2>
+          <h2 className="text-3xl font-bold">{translate("Property Yearly Costs")}</h2>
           <p className="text-gray-600 mt-3 max-w-2xl mx-auto">
-            {translate("costs.yearlyCostsDescription")}
+            {translate("Understanding the annual costs of property ownership in the UAE is essential for making informed investment decisions.")}
           </p>
           <div className="gold-separator mx-auto mt-4" />
         </div>
@@ -69,17 +69,17 @@ const PropertyYearlyCosts = () => {
                 
                 <div className="space-y-3">
                   <div>
-                    <p className="font-semibold text-sm">{translate("costs.rate")}:</p>
+                    <p className="font-semibold text-sm">{translate("Rate")}:</p>
                     <p>{translate(cost.rate)}</p>
                   </div>
                   
                   <div>
-                    <p className="font-semibold text-sm">{translate("costs.exampleAnnualCost")}:</p>
+                    <p className="font-semibold text-sm">{translate("Example Annual Cost")}:</p>
                     <p className="text-luxury-gold font-medium">{formatPrice(cost.example)}</p>
                   </div>
                   
                   <div>
-                    <p className="font-semibold text-sm">{translate("costs.notes")}:</p>
+                    <p className="font-semibold text-sm">{translate("Notes")}:</p>
                     <p className="text-sm">{translate(cost.notes)}</p>
                   </div>
                 </div>
@@ -89,13 +89,13 @@ const PropertyYearlyCosts = () => {
         </div>
 
         <div className="bg-white p-6 rounded-lg shadow-md mt-10">
-          <h3 className="text-xl font-bold mb-4">{translate("costs.additionalConsiderations")}</h3>
+          <h3 className="text-xl font-bold mb-4">{translate("Additional Considerations")}</h3>
           <ul className="list-disc pl-6 space-y-2">
-            <li>{translate("costs.considerations.lowTaxes")}</li>
-            <li>{translate("costs.considerations.noAnnualTax")}</li>
-            <li>{translate("costs.considerations.registrationFee")}</li>
-            <li>{translate("costs.considerations.taxFreeIncome")}</li>
-            <li>{translate("costs.considerations.maintenanceBudget")}</li>
+            <li>{translate("Property taxes in Dubai are among the lowest globally")}</li>
+            <li>{translate("No annual property tax as commonly found in other countries")}</li>
+            <li>{translate("One-time 4% property registration fee paid at purchase")}</li>
+            <li>{translate("Rental income is currently tax-free in the UAE")}</li>
+            <li>{translate("Budget 1-2% of property value for annual maintenance")}</li>
           </ul>
         </div>
       </div>
