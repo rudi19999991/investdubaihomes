@@ -53,7 +53,7 @@ const CryptoBuying = () => {
           title={translate("Buying Property with Cryptocurrency")}
           subtitle={translate("The future of real estate transactions in Dubai")}
           videoUrl="https://player.vimeo.com/external/483429590.sd.mp4?s=cbc49afb83b8e39f178d08f3a7fbe357263dbc8a&profile_id=164&oauth2_token_id=57447761"
-          backgroundImage="https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80"
+          backgroundImage="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFVHlknobgVF9RKPRw5cpME8H70VbhWwMhiQ&s"
           showCta={false}
         />
         
@@ -188,7 +188,7 @@ const CryptoBuying = () => {
                   <div className="space-y-4">
                     <div className="group">
                       <img 
-                        src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" 
+                        src="https://images.mansionglobal.com/im-11435563" 
                         alt="Luxury villa" 
                         className="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
                       />
@@ -198,7 +198,7 @@ const CryptoBuying = () => {
                     
                     <div className="group">
                       <img 
-                        src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80" 
+                        src="https://www.visitdubai.com/-/media/gathercontent/poi/b/burj-khalifa/fallback-image/poi-burj-khalifa-3-dtcm-jun-2023.jpg" 
                         alt="Downtown apartment" 
                         className="w-full h-48 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity"
                       />
