@@ -10,20 +10,21 @@ const BankLogo: React.FC<BankLogoProps> = ({ bank, className = "" }) => {
   const getBankLogo = () => {
     switch(bank.toLowerCase()) {
       case 'emirates nbd':
-        return 'https://upload.wikimedia.org/wikipedia/commons/1/10/Emirates_NBD_Logo.svg';
+        return 'https://banner2.cleanpng.com/20180617/ssv/aa6u3a670.webp';
       case 'adcb':
-        return 'https://upload.wikimedia.org/wikipedia/commons/5/57/ADCB-Logo-Eng.svg';
+        return 'https://arabmls.org/wp-content/uploads/2024/04/Abu_Dhabi_Commercial_Bank_logo.svg.png';
       case 'dib':
-        return 'https://upload.wikimedia.org/wikipedia/commons/2/27/Dubai_Islamic_Bank_logo.svg';
+        return 'https://cdn.freelogovectors.net/wp-content/uploads/2020/03/dubai-islamic-bank-logo-180x180.png';
       case 'mashreq bank':
+ 	return 'https://static.wixstatic.com/media/afe8e2_672ae92298fc4e4fa06fa6d0fd11d426~mv2.png/v1/fill/w_320,h_326,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mashreq.png';
       case 'mashreq':
-        return 'https://upload.wikimedia.org/wikipedia/commons/6/60/Mashreq_bank_logo.svg';
+        return 'https://static.wixstatic.com/media/afe8e2_672ae92298fc4e4fa06fa6d0fd11d426~mv2.png/v1/fill/w_320,h_326,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mashreq.png';
       case 'rakbank':
-        return 'https://upload.wikimedia.org/wikipedia/commons/4/4f/RAKBANK_logo.svg';
+        return 'https://timg1cf.b8cdn.com/images/templates/rak_bank/rak_bank-logo-share-en.png?vid=25';
       case 'hsbc':
-        return 'https://upload.wikimedia.org/wikipedia/commons/a/aa/HSBC_logo_%282018%29.svg';
+        return 'https://www.veryicon.com/download/png/internet--web/payment-method/hsbc-bank-1?s=256';
       case 'enbd - islamic banking':
-        return 'https://upload.wikimedia.org/wikipedia/commons/1/10/Emirates_NBD_Logo.svg';
+        return 'https://banner2.cleanpng.com/20180617/ssv/aa6u3a670.webp';
       default:
         return 'https://placeholder.pics/svg/200x100/DEDEDE/555555/Bank%20Logo';
     }
