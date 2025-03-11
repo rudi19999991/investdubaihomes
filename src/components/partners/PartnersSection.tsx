@@ -9,54 +9,54 @@ const PartnersSection = () => {
 
   // Lists of partners by category with logos
   const developers = [
-    { name: "Emaar Properties", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Emaar_Properties_logo.svg/1200px-Emaar_Properties_logo.svg.png" },
-    { name: "Dubai Holding", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Dubai_Holding_logo_vector.svg/2560px-Dubai_Holding_logo_vector.svg.png" },
-    { name: "Nakheel", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Nakheel_logo.svg/1200px-Nakheel_logo.svg.png" },
-    { name: "DAMAC Properties", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Damac_properties_logo.svg/1200px-Damac_properties_logo.svg.png" },
-    { name: "Meraas", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Meraas_Holding_logo.svg/1200px-Meraas_Holding_logo.svg.png" },
-    { name: "Sobha Realty", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Sobha_Limited_Logo.svg/1200px-Sobha_Limited_Logo.svg.png" },
-    { name: "Omniyat", logo: "https://www.omniyat.com/themes/custom/omniyat/logo.svg" },
-    { name: "Azizi Developments", logo: "https://www.azizidevelopments.com/assets/imgs/logo-black.png" },
-    { name: "Danube Properties", logo: "https://www.danubeproperties.ae/images/logo.png" },
-    { name: "Binghatti Developers", logo: "https://binghatti.com/wp-content/uploads/2022/04/Binghatti-Logo-Horizontal-Light.svg" },
-    { name: "RAK Properties", logo: "https://www.rakproperties.net/Themes/RAKGROUP/Content/img/logo.png" },
-    { name: "Al Hamra", logo: "https://alhamra.ae/wp-content/themes/alhamra/assets/images/logo.svg" }
+    { name: "Emaar Properties", logo: "https://seekvectors.com/files/download/emaar-logo.png" },
+    { name: "Dubai Holding", logo: "https://upload.wikimedia.org/wikipedia/commons/9/91/AW_DH_PV_POS_RGB_EN_%28002%29.png" },
+    { name: "Nakheel", logo: "https://cdn.worldvectorlogo.com/logos/nakheel-properties-logo.svg" },
+    { name: "DAMAC Properties", logo: "https://banner2.cleanpng.com/20180425/uhq/ave9mhcdz.webp" },
+    { name: "Meraas", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Meraas-logo.svg/1200px-Meraas-logo.svg.png" },
+    { name: "Sobha Realty", logo: "https://raydium.ae/wp-content/uploads/2024/05/sobha-realty_eng-logo-02.png" },
+    { name: "Omniyat", logo: "https://static.wixstatic.com/media/f21e62_d2cedb3aa1dc4364b33625748a94a343~mv2.png/v1/fill/w_312,h_191,al_c/Omniyat.png" },
+    { name: "Azizi Developments", logo: "https://upload.wikimedia.org/wikipedia/commons/2/23/Azizi-developments.png" },
+    { name: "Danube Properties", logo: "https://emirates.estate/de/uploads/images/2020-12/danube.png" },
+    { name: "Binghatti Developers", logo: "https://home-dubai.de/wp-content/uploads/2024/12/binghatti-logo.png" },
+    { name: "RAK Properties", logo: "https://fpproperty.com/wp-content/uploads/2023/09/RAK-Properties.svg" },
+    { name: "Al Hamra", logo: "https://cparamount.com/wp-content/themes/cparamount/assets/images/al-hamra-logo.png" }
   ];
 
   const banks = [
-    { name: "Emirates NBD", logo: "https://www.emiratesnbd.com/Style%20Library/EmiratesNBD/img/logo.png" },
-    { name: "ADCB", logo: "https://www.adcb.com/Style%20Library/images/logo.svg" },
-    { name: "Dubai Islamic Bank", logo: "https://www.dib.ae/images/dib-logo-eng.svg" },
-    { name: "Mashreq Bank", logo: "https://www.mashreqbank.com/sites/default/files/2022-03/Mashreq-Logo-Digital_1.svg" },
-    { name: "RAKBANK", logo: "https://rakbank.ae/wps/wcm/connect/rakbank_contentsource/Website-Template/Home/RAKBANK-LOGO.svg" },
-    { name: "HSBC UAE", logo: "https://www.hsbc.ae/-/media/hsbc/hsbc-ae/brand/logo-hsbc-white-transparent.svg" },
-    { name: "FAB", logo: "https://www.bankfab.com/-/media/fabgroup/images/homepage/fab-logo.svg" },
-    { name: "Standard Chartered UAE", logo: "https://av.sc.com/ae/content/images/uae-sc-logo-white.png" },
-    { name: "Ajman Bank", logo: "https://www.ajmanbank.ae/-/media/Project/AjmanBank/Images/svg/ajman-bank-logo-with-slogan-eng.svg" },
-    { name: "Commercial Bank of Dubai", logo: "https://www.cbd.ae/Style%20Library/images/logo.svg" }
+    { name: "Emirates NBD", logo: "https://banner2.cleanpng.com/20180617/ssv/aa6u3a670.webp" },
+    { name: "ADCB", logo: "https://arabmls.org/wp-content/uploads/2024/04/Abu_Dhabi_Commercial_Bank_logo.svg.png" },
+    { name: "Dubai Islamic Bank", logo: "https://cdn.freelogovectors.net/wp-content/uploads/2020/03/dubai-islamic-bank-logo-180x180.png" },
+    { name: "Mashreq Bank", logo: "https://static.wixstatic.com/media/afe8e2_672ae92298fc4e4fa06fa6d0fd11d426~mv2.png/v1/fill/w_320,h_326,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Mashreq.png" },
+    { name: "RAKBANK", logo: "https://timg1cf.b8cdn.com/images/templates/rak_bank/rak_bank-logo-share-en.png?vid=25" },
+    { name: "HSBC UAE", logo: "https://www.veryicon.com/download/png/internet--web/payment-method/hsbc-bank-1?s=256" },
+    { name: "FAB", logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/First_Abu_Dhabi_Bank_Logo.svg/2560px-First_Abu_Dhabi_Bank_Logo.svg.png" },
+    { name: "Standard Chartered UAE", logo: "https://cdn.iconscout.com/icon/free/png-256/free-standard-chartered-711808.png?f=webp" },
+    { name: "Ajman Bank", logo: "https://companieslogo.com/img/orig/AJMANBANK.AE_BIG-f1b1925b.png?t=1720244490" },
+    { name: "Commercial Bank of Dubai", logo: "https://companieslogo.com/img/orig/CBD.AE_BIG-7b02325d.png?t=1720244491" }
   ];
 
   const lawFirms = [
-    { name: "Al Tamimi & Company", logo: "https://www.tamimi.com/wp-content/themes/tamimi/assets/images/logo.svg" },
-    { name: "Baker McKenzie", logo: "https://www.bakermckenzie.com/-/media/images/bm-logo.png" },
-    { name: "Clyde & Co", logo: "https://www.clydeco.com/themes/custom/clyde_theme/logo.svg" },
-    { name: "Hadef & Partners", logo: "https://www.hadefpartners.com/logo-light.svg" },
-    { name: "BSA Ahmad Bin Hezeem & Associates", logo: "https://bsabh.com/wp-content/themes/bsa/assets/img/logo.png" },
-    { name: "Galadari Advocates & Legal Consultants", logo: "https://galadarilaw.com/wp-content/themes/galadari/assets/images/logo-black.svg" },
-    { name: "Global Advocates", logo: "https://www.globaladvocates.com/assets/images/global-advocates-dubai-law-firm-logo.png" },
-    { name: "James Berry & Associates", logo: "https://www.jamesberrylaw.com/wp-content/uploads/2020/01/JB-Legal-logo-1-1.png" }
+    { name: "Al Tamimi & Company", logo: "https://i0.wp.com/www.lexis.ae/wp-content/uploads/2022/01/WIL-Sponsor_Al-Tamimi-Co.png?resize=300%2C300&ssl=1g" },
+    { name: "Baker McKenzie", logo: "https://download.logo.wine/logo/Baker_McKenzie/Baker_McKenzie-Logo.wine.png" },
+    { name: "Clyde & Co", logo: "https://eagles.org.uk/wp-content/uploads/bfi_thumb/clyde-co-36n2l3t98v07j0f3l24yup16txd0pqpnarhfsg2hw9ouns7po.png" },
+    { name: "Hadef & Partners", logo: "https://www.legal500.com/cdn-cgi/image/width=256/https://www.legal500.com/profiles/wp-content/uploads/sites/13/2025/01/HP-Primary-EN-Logo-RGB-AW.png" },
+    { name: "BSA Ahmad Bin Hezeem & Associates", logo: "https://files.lbr.cloud/public/2023-11/main-logo-full.png?VersionId=iPIyM6xK0qdS3VBd5O2PyuTSlwvHzbyc" },
+    { name: "Galadari Advocates & Legal Consultants", logo: "https://galadarilaw.com/wp-content/themes/Galadari/img/Galadari%20Logo%20-%20Full%20-%20Purple.png" },
+    { name: "Meyer-Reumann & Partners", logo: "https://s2091.pcdn.co/wp-content/uploads/2019/10/MP-Logo_Color-web.png" },
+    { name: "Afridi & Angell", logo: "https://d1imjpjik7kc4g.cloudfront.net/scfirm_images/e491bd95340cd4f9e355c803c53b2438.png" }
   ];
 
   const freeZones = [
-    { name: "Dubai Multi Commodities Centre (DMCC)", logo: "https://www.dmcc.ae/themes/custom/dmcc/images/logo.svg" },
-    { name: "Dubai International Financial Centre (DIFC)", logo: "https://www.difc.ae/images/logo.svg" },
-    { name: "Dubai Silicon Oasis", logo: "https://www.dsoa.ae/content/dam/dsoa/logo/logo-en.svg" },
-    { name: "Dubai Media City", logo: "https://www.dmc.ae/wp-content/themes/mediaCity/images/logo.svg" },
-    { name: "Jebel Ali Free Zone (JAFZA)", logo: "https://jafza.ae/wp-content/themes/jafza/assets/img/logo.svg" },
-    { name: "Dubai Airport Free Zone (DAFZA)", logo: "https://www.dafz.ae/en/PublishingImages/dafza-logo.svg" },
-    { name: "Ras Al Khaimah Economic Zone (RAKEZ)", logo: "https://www.rakez.com/resources/img/rakez-logo-white.svg" },
-    { name: "Ajman Free Zone", logo: "https://www.ajmanfreezone.gov.ae/content/dam/afz/portal/brand-footer/AJMAN%20FREE%20ZONE-F.svg" },
-    { name: "Sharjah Media City (SHAMS)", logo: "https://www.shams.ae/en/images/logo.svg" }
+    { name: "Dubai Multi Commodities Centre (DMCC)", logo: "https://images.seeklogo.com/logo-png/45/2/dmcc-logo-png_seeklogo-456830.png?v=1957127806031201864" },
+    { name: "Dubai International Financial Centre (DIFC)", logo: "https://upload.wikimedia.org/wikipedia/commons/5/54/DIFC_logo.png" },
+    { name: "Dubai Silicon Oasis", logo: "https://solisdentalclinic.com/wp-content/uploads/2022/04/Logos-02-e1648786286935-300x184.png" },
+    { name: "Dubai Media City", logo: "https://images.squarespace-cdn.com/content/v1/5b33b13596e76f3138a6dd52/1587635757844-H21E1ID1LWG4QHT1MGSH/dmc+logo.png" },
+    { name: "Jebel Ali Free Zone (JAFZA)", logo: "https://images.seeklogo.com/logo-png/33/2/jafza-logo-png_seeklogo-337403.png" },
+    { name: "Dubai Airport Free Zone (DAFZA)", logo: "https://dafza.audit.ae/wp-content/uploads/2024/06/image-12.webp" },
+    { name: "Ras Al Khaimah Economic Zone (RAKEZ)", logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/RAKEZ_Logo_-_English_-_Standard_%28Web%29_Small.png" },
+    { name: "Ajman Free Zone", logo: "https://ik.imagekit.io/gssz39c8t/twsz3/wp-content/uploads/2022/01/ajmanfreezone-300x135.png" },
+    { name: "Sharjah Media City (SHAMS)", logo: "https://www.aurionuae.com/wp-content/uploads/2022/09/shams-logo.webp" }
   ];
 
   return (
