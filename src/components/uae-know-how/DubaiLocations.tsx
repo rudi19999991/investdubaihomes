@@ -17,7 +17,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Building}
           title="Dubai Marina"
-          imageUrl="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://www.dubai.it/en/wp-content/uploads/sites/142/dubai-marina-hd.jpg"
           description="One of Dubai's most iconic waterfront communities, featuring over 200 residential towers, a 7km promenade, and a vibrant lifestyle."
           propertyTypes="Apartments, Penthouses"
           averagePrice="AED 1,500 - 2,200/sqft"
@@ -29,7 +29,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Palmtree}
           title="Palm Jumeirah"
-          imageUrl="https://images.unsplash.com/photo-1578974721235-91bea6f095c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTdsg5Y6Gl3nvunFZ7DJP3990WckCGtA-4fA&s"
           description="The world-famous man-made island shaped like a palm tree, featuring luxury villas, high-end apartments, and 5-star hotels."
           propertyTypes="Villas, Apartments, Penthouses"
           averagePrice="AED 2,500 - 4,000/sqft"
@@ -43,7 +43,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Landmark}
           title="Downtown Dubai"
-          imageUrl="https://images.unsplash.com/photo-1546412414-e1885e51cfa5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://imagedelivery.net/cyTHrsLOsnLPkuSeNd2_9g/d2fc98c1-f3d0-4b85-5b0a-ad65370b7f00/public"
           description="Home to the iconic Burj Khalifa, Dubai Mall, and Dubai Fountain, Downtown is the prestigious central district of Dubai."
           propertyTypes="Apartments, Penthouses"
           averagePrice="AED 2,000 - 3,500/sqft"
@@ -55,7 +55,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Home}
           title="Dubai Hills Estate"
-          imageUrl="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTryx7Q3PA0D1RiVs7NW7fSxVXsMqeOMQdOvg&s"
           description="A premium community developed by Emaar, featuring an 18-hole championship golf course, parks, and luxury villas and apartments."
           propertyTypes="Villas, Townhouses, Apartments"
           averagePrice="AED 1,400 - 2,200/sqft"
@@ -69,7 +69,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Waves}
           title="Jumeirah Beach Residence (JBR)"
-          imageUrl="https://images.unsplash.com/photo-1572383672419-ab35444a5d0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://focus.hidubai.com/content/images/2022/10/jbr.png"
           description="A 1.7 km beachfront community offering luxury apartments, retail outlets, and dining options with direct beach access."
           propertyTypes="Apartments, Penthouses"
           averagePrice="AED 1,600 - 2,400/sqft"
@@ -81,7 +81,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Ship}
           title="Dubai Creek Harbour"
-          imageUrl="https://images.unsplash.com/photo-1617259165729-0c973540884c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://cdn.dxbproperties.ae/media/seo_images_property/dubai_creek_harbour_thumbnail_1_1200.webp?width=1200&height=630&format=jpeg&quality=15"
           description="A new waterfront development set to become one of Dubai's most iconic areas, featuring the towering Dubai Creek Tower."
           propertyTypes="Apartments, Penthouses, Townhouses"
           averagePrice="AED 1,300 - 2,000/sqft"
@@ -95,7 +95,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Building}
           title="Business Bay"
-          imageUrl="https://images.unsplash.com/photo-1512207736890-4e1fcc1802e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://www.visitdubai.com/-/media/images/leisure/detail-pages/explore-dubai/1-3-dubai-neighbourhoods-t34/dubai-neighborhood-business-bay.jpg"
           description="A business hub with a mix of commercial and residential properties, offering canal views and proximity to Downtown Dubai."
           propertyTypes="Apartments, Office Spaces"
           averagePrice="AED 1,300 - 2,000/sqft"
@@ -107,7 +107,7 @@ const DubaiLocations = () => {
         <LocationCard 
           icon={Mountain}
           title="Dubai Land"
-          imageUrl="https://images.unsplash.com/photo-1549944850-84e00be4203b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://emirates.estate/uploads/images/2021-10/ad_5b184299f0dea4.49096784.jpg"
           description="A massive residential and entertainment development featuring theme parks, sports venues, and a variety of housing options."
           propertyTypes="Villas, Townhouses, Apartments"
           averagePrice="AED 900 - 1,400/sqft"
