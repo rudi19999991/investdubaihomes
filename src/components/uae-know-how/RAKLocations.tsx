@@ -81,7 +81,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={Ship}
           title="Al Marjan Island"
-          imageUrl="https://images.unsplash.com/photo-1580223530027-c6a0d516b523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://www.mepmiddleeast.com/cloud/2024/11/28/gVYWU2nBdc24MegZaGih-1024x576.webp"
           description="A man-made archipelago extending into the clear waters of the Arabian Gulf, offering waterfront living with stunning views."
           propertyTypes="Apartments, Villas, Hotel Residences"
           averagePrice="AED 800 - 1,400/sqft"
@@ -93,7 +93,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={MapPin}
           title="Al Hamra Village"
-          imageUrl="https://images.unsplash.com/photo-1540202404-a2f29016b523?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKHD4WKgPWlyDoUeKkNP8Y4nAtbXNv1Za9ow&s"
           description="An integrated community featuring a championship golf course, marina, shopping mall, and various residential options."
           propertyTypes="Villas, Townhouses, Apartments"
           averagePrice="AED 750 - 1,200/sqft"
@@ -107,7 +107,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={Building}
           title="Mina Al Arab"
-          imageUrl="https://images.unsplash.com/photo-1565524466218-91ff1e1bf72a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://visitrasalkhaimah.com/wp-content/uploads/2023/05/1-1.jpg"
           description="A beachfront community with a focus on nature and sustainability, featuring protected coastal wetlands, walking paths, and eco-friendly designs."
           propertyTypes="Apartments, Villas, Townhouses"
           averagePrice="AED 800 - 1,100/sqft"
@@ -119,7 +119,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={Home}
           title="Gateway Residences"
-          imageUrl="https://images.unsplash.com/photo-1575517111839-3a3843ee7f5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://i.ytimg.com/vi/3fOKu3kF0iI/maxresdefault.jpg"
           description="Modern residential towers in the heart of Ras Al Khaimah city, offering convenient urban living with good connectivity to Dubai."
           propertyTypes="Apartments"
           averagePrice="AED 650 - 950/sqft"
@@ -133,7 +133,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={Mountain}
           title="Jebel Jais"
-          imageUrl="https://images.unsplash.com/photo-1518602164209-4e2c3dff3ada?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR9PebPz_2QiXe0MRHOAw1_SIahSvVfIbGMQ&s"
           description="Luxury mountain residences near the UAE's highest peak, offering breathtaking views, cooler temperatures, and adventure activities nearby."
           propertyTypes="Villas, Chalets"
           averagePrice="AED 900 - 1,500/sqft"
@@ -145,7 +145,7 @@ const RAKLocations = () => {
         <LocationCard 
           icon={Hotel}
           title="Wynn Resort Area"
-          imageUrl="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80"
+          imageUrl="https://preview.thenewsmarket.com/Previews/WYNN/StillAssets/1920x1080/642192.jpg"
           description="Exclusive properties surrounding the upcoming Wynn integrated resort and casino, expected to become a premier investment area for luxury properties and hotels."
           propertyTypes="Luxury Apartments, Hotel Residences"
           averagePrice="AED 1,200 - 2,000/sqft"
