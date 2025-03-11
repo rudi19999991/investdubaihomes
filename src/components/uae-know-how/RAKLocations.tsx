@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Ship, MapPin, Building, Home, Mountain, Hotel, Trophy, TrendingUp } from "lucide-react";
+import { Ship, MapPin, Building, Home, Mountain, Hotel, Trophy, TrendingUp, DollarSign, Users, Briefcase } from "lucide-react";
 import LocationCard from "./LocationCard";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -47,8 +46,34 @@ const RAKLocations = () => {
           </div>
         </div>
         
-        <p className="text-gray-600 text-sm">
-          {translate("The Wynn Resort development is transforming RAK into a premier luxury destination, making it an excellent time to invest in the emirate's rapidly growing real estate market.")}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <DollarSign className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("Economic Impact")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("The Wynn project is expected to create over 4,000 permanent jobs and contribute significantly to RAK's GDP, creating a ripple effect throughout the economy.")}
+            </p>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <Users className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("Tourism Boost")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("The integrated resort is projected to increase tourism by 35% within the first year of opening, creating high demand for investment properties and rental accommodations.")}
+            </p>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <Briefcase className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("Foreign Investment")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("The project has already attracted over $500 million in foreign direct investment to the surrounding areas, with property values expecting to appreciate by 20-30% before completion.")}
+            </p>
+          </div>
+        </div>
+        
+        <p className="text-gray-600">
+          {translate("The Wynn Resort development is transforming RAK into a premier luxury destination, making it an excellent time to invest in the emirate's rapidly growing real estate market. Property investors who enter the market now, before the resort's 2026 opening, are positioned to benefit from significant capital appreciation and high rental returns as tourism and population surge in the coming years.")}
         </p>
       </div>
 

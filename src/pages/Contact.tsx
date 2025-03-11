@@ -73,8 +73,8 @@ const Contact = () => {
                   <Mail className="h-5 w-5 text-luxury-gold mr-2" /> {translate("Email Us")}
                 </h3>
                 <p className="text-gray-600 pl-7">
-                  info@investdubai.com<br />
-                  sales@investdubai.com
+                  info@memydubai.com<br />
+                  sales@memydubai.com
                 </p>
               </div>
             </div>

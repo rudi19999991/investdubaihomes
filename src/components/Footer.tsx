@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Twitter, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import CurrencySelector from "./CurrencySelector";
 
 const Footer = () => {
   const { translate } = useLanguage();
@@ -15,7 +14,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <h3 className="text-2xl font-bold mb-4">
-              <span className="text-luxury-gold">INVEST</span>DUBAI
+              <span className="text-luxury-gold">ME MY</span>DUBAI
             </h3>
             <p className="text-gray-300 mb-4">
               {translate("Your premier partner for luxury property investments in Dubai and Ras Al Khaimah.")}
@@ -34,7 +33,6 @@ const Footer = () => {
                 <Youtube size={20} />
               </a>
             </div>
-            <CurrencySelector />
           </div>
 
           {/* Quick Links */}
@@ -127,7 +125,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="mr-2 h-5 w-5 text-luxury-gold" />
-                <span className="text-gray-300">info@investdubai.com</span>
+                <span className="text-gray-300">info@memydubai.com</span>
               </li>
             </ul>
           </div>
@@ -136,7 +134,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              &copy; {new Date().getFullYear()} INVESTDUBAI. {translate("All rights reserved")}.
+              &copy; {new Date().getFullYear()} ME MY DUBAI. {translate("All rights reserved")}.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link to="/privacy" className="text-gray-400 hover:text-luxury-gold text-sm">
