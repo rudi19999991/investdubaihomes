@@ -1,11 +1,12 @@
-
 import React from "react";
-import { Ship, MapPin, Building, Home, Mountain } from "lucide-react";
+import { Ship, MapPin, Building, Home, Mountain, Hotel, Trophy, TrendingUp } from "lucide-react";
 import LocationCard from "./LocationCard";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const RAKLocations = () => {
   const navigate = useNavigate();
+  const { translate } = useLanguage();
 
   const handleViewDevelopments = (area: string) => {
     navigate(`/uae-know-how/${area.toLowerCase().replace(/\s+/g, '-')}`);
@@ -13,6 +14,43 @@ const RAKLocations = () => {
 
   return (
     <div className="space-y-8">
+      <div className="bg-luxury-navy/5 rounded-xl p-6 mb-12">
+        <h2 className="text-2xl font-bold mb-4 flex items-center">
+          <Hotel className="mr-2 h-6 w-6 text-luxury-navy" />
+          {translate("Wynn Resort & Casino Development")}
+        </h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-6">
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <Trophy className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("World-Class Entertainment")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("Opening in 2026, RAK's $3.9 billion integrated resort will feature luxury hotels, high-end shopping, and the region's first gaming facilities.")}
+            </p>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <TrendingUp className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("Investment Potential")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("Expected to attract over 1 million additional annual visitors, driving significant property value appreciation and rental demand.")}
+            </p>
+          </div>
+          
+          <div className="bg-white p-4 rounded-lg shadow-sm">
+            <Building className="h-6 w-6 text-luxury-gold mb-2" />
+            <h3 className="font-semibold mb-2">{translate("Infrastructure Growth")}</h3>
+            <p className="text-gray-600 text-sm">
+              {translate("Major infrastructure developments including expanded transport links and new lifestyle amenities are underway to support the resort.")}
+            </p>
+          </div>
+        </div>
+        
+        <p className="text-gray-600 text-sm">
+          {translate("The Wynn Resort development is transforming RAK into a premier luxury destination, making it an excellent time to invest in the emirate's rapidly growing real estate market.")}
+        </p>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <LocationCard 
           icon={Ship}

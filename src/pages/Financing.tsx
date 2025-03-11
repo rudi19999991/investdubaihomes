@@ -37,18 +37,21 @@ const Financing = () => {
             </div>
             
             <p className="text-gray-600 mb-10 max-w-3xl">
-              {translate("Navigating the financing options for your Dubai property investment is a crucial step in your investment journey. Below are the available options for both UAE residents and international investors.")}
+              {translate("Discover comprehensive financing solutions for your Dubai property investment. Below are the available options for both UAE residents and international investors.")}
             </p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-              {/* Financing Information */}
-              <div className="space-y-8">
-                <FinancingTabs />
-                <AdditionalFinancing />
+            <div className="space-y-10">
+              <FinancingTabs />
+              <AdditionalFinancing />
+            </div>
+            
+            <div className="mt-16">
+              <div className="text-center mb-10">
+                <h2 className="text-2xl font-bold mb-3">{translate("Mortgage Calculator")}</h2>
+                <p className="text-gray-600">{translate("Plan your investment with our mortgage calculator")}</p>
+                <div className="gold-separator mx-auto mt-4" />
               </div>
-              
-              {/* Mortgage Calculator */}
-              <div className="lg:sticky lg:top-24">
+              <div className="max-w-2xl mx-auto">
                 <MortgageCalculator />
               </div>
             </div>
