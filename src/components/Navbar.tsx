@@ -20,17 +20,18 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Define navigation links with translation keys
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "Properties", path: "/properties" },
-    { name: "About Us", path: "/about-us" },
-    { name: "UAE Know How", path: "/uae-know-how" },
-    { name: "ROI & Investment", path: "/roi" },
-    { name: "Company Setup", path: "/company-setup" },
-    { name: "Financing", path: "/financing" },
-    { name: "Crypto Buying", path: "/crypto-buying" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    { name: "navbar.home", path: "/" },
+    { name: "navbar.properties", path: "/properties" },
+    { name: "navbar.aboutUs", path: "/about-us" },
+    { name: "navbar.uaeKnowHow", path: "/uae-know-how" },
+    { name: "navbar.roiInvestment", path: "/roi" },
+    { name: "navbar.companySetup", path: "/company-setup" },
+    { name: "navbar.financing", path: "/financing" },
+    { name: "navbar.cryptoBuying", path: "/crypto-buying" },
+    { name: "navbar.blog", path: "/blog" },
+    { name: "navbar.contact", path: "/contact" },
   ];
 
   // Helper function to determine if a link is active
@@ -89,7 +90,7 @@ const Navbar = () => {
               </DropdownMenu>
 
               <Button className="bg-luxury-gold hover:bg-luxury-gold/90 text-white" asChild>
-                <Link to="/contact">{translate("Book Consultation")}</Link>
+                <Link to="/contact">{translate("navbar.bookConsultation")}</Link>
               </Button>
             </div>
           </div>
@@ -123,7 +124,7 @@ const Navbar = () => {
               ))}
               
               <div className="py-2 border-t border-gray-100">
-                <p className="text-sm text-luxury-charcoal/70 mb-2">Language</p>
+                <p className="text-sm text-luxury-charcoal/70 mb-2">{translate("navbar.language")}</p>
                 <div className="flex flex-wrap gap-2">
                   {languages.map((lang) => (
                     <Button 
@@ -144,7 +145,7 @@ const Navbar = () => {
                 onClick={() => setIsMenuOpen(false)}
                 asChild
               >
-                <Link to="/contact">{translate("Book Consultation")}</Link>
+                <Link to="/contact">{translate("navbar.bookConsultation")}</Link>
               </Button>
             </div>
           </div>
