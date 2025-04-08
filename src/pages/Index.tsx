@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/HeroSection";
@@ -10,9 +10,27 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import CurrencySelector from "@/components/CurrencySelector";
+import NewsletterSubscription from "@/components/NewsletterSubscription";
 
 const Index = () => {
   const { translate } = useLanguage();
+  
+  // Show popup after a delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Show popup after 5 seconds
+      const popupShown = localStorage.getItem("newsletterPopupShown");
+      
+      if (!popupShown) {
+        // Set the popup shown flag in localStorage
+        localStorage.setItem("newsletterPopupShown", "true");
+        
+        // The showInitially prop on NewsletterSubscription will display the popup
+      }
+    }, 5000);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Sample featured properties
   const featuredProperties: PropertyProps[] = [
@@ -69,6 +87,9 @@ const Index = () => {
         />
 
         <FeatureSection />
+        
+        {/* Newsletter Popup */}
+        <NewsletterSubscription showInitially={true} />
         
         {/* Featured Properties */}
         <section className="section-padding">
